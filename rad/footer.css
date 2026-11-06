@@ -1,0 +1,184 @@
+/* footer.css — استخراج‌شده از site.css (متغیرهای --rm-* در design-system.css تعریف شده‌اند) */
+
+.site-footer {
+  --sf-tab: var(--rm-white); /* رنگ زبانه‌ها = رنگ پس‌زمینه صفحه */
+  --sf-gutter: max(24px, calc((100% - 1240px) / 2 + 24px));
+  --sf-r: 26px; /* گردی گوشه‌ها */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 120px 0 104px;
+  color: rgba(255,255,255,.82);
+  background:
+    radial-gradient(45% 80% at 76% 42%, var(--rm-overlay-orange-14), transparent 70%),
+    linear-gradient(100deg, var(--rm-palette-123a9c) 0%, var(--rm-palette-12308a) 45%, var(--rm-palette-0d1f4f) 100%);
+  content-visibility: visible;
+}
+
+body.page-home .site-footer { --sf-tab: var(--rm-home-canvas); }
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -90px;
+  top: 50%;
+  width: 560px;
+  height: 560px;
+  translate: 0 -50%;
+  background: url("logo.png") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+  opacity: .07;
+  pointer-events: none;
+}
+
+.sf-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px var(--sf-gutter) 18px 30px;
+  background: var(--sf-tab);
+  border-bottom-left-radius: 34px;
+  text-decoration: none;
+}
+
+.sf-mark { width: 44px; height: 44px; flex: none; object-fit: contain; }
+
+.sf-logo strong { display: block; font-size: 17px; font-weight: 800; line-height: 1.4; color: var(--rm-blue-dark); }
+
+.sf-logo small { display: block; font-size: 11px; letter-spacing: .16em; line-height: 1.4; color: var(--rm-gray); }
+
+.sf-copy {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 15px 30px 14px max(84px, var(--sf-gutter));
+  background: var(--sf-tab);
+  border-top-right-radius: 30px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--rm-text-strong);
+}
+
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 100% 100%, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)) left top / var(--sf-r) var(--sf-r) no-repeat,
+    radial-gradient(circle at 0 0, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)) right bottom / var(--sf-r) var(--sf-r) no-repeat;
+}
+
+.sf-logo::before, .sf-logo::after, .sf-copy::before, .sf-copy::after {
+  content: "";
+  position: absolute;
+  width: var(--sf-r);
+  height: var(--sf-r);
+  pointer-events: none;
+}
+
+.sf-logo::before { right: 100%; top: 0; background: radial-gradient(circle at 0 100%, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)); }
+
+.sf-logo::after  { right: 0; top: 100%; background: radial-gradient(circle at 0 100%, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)); }
+
+.sf-copy::before { left: 100%; bottom: 0; background: radial-gradient(circle at 100% 0, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)); }
+
+.sf-copy::after  { left: 0; bottom: 100%; background: radial-gradient(circle at 100% 0, transparent calc(var(--sf-r) - .5px), var(--sf-tab) var(--sf-r)); }
+
+.sf-wrap { position: relative; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+.sf-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.sf-cta h2 { margin: 0 0 22px; max-width: 11em; font-size: clamp(26px, 3vw, 34px); font-weight: 800; line-height: 1.6; color: #fff; }
+
+.sf-cta p {
+  margin: 0;
+  max-width: 44ch;
+  padding-inline-start: 14px;
+  border-inline-start: 2px solid var(--rm-orange);
+  font-size: 14px;
+  line-height: 2;
+  color: rgba(255,255,255,.85);
+}
+
+.sf-up {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 44px;
+  font-size: 13px; color: rgba(255,255,255,.88); text-decoration: none;
+  transition: color .2s ease;
+}
+
+.sf-up svg { width: 16px; height: 16px; transition: transform .25s var(--rm-ease); }
+
+.sf-up:hover, .sf-up:focus-visible { color: var(--rm-orange); }
+
+.sf-up:hover svg, .sf-up:focus-visible svg { transform: translateY(-3px); }
+
+.site-footer .sf-col h3 { margin: 0 0 22px; font-size: 16px; font-weight: 800; color: #fff; }
+
+.sf-col h3::after { content: ""; display: block; width: 42px; height: 3px; margin-top: 8px; border-radius: 3px; background: linear-gradient(to left, var(--rm-orange), transparent); }
+
+.sf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+
+.sf-col a {
+  display: inline-block;
+  padding: 5px 0;
+  font-size: 14.5px;
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  transition: color .2s ease, transform .25s var(--rm-ease);
+}
+
+.sf-col a:hover, .sf-col a:focus-visible { color: var(--rm-orange); transform: translateX(-5px); }
+
+.sf-contact li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.9; color: rgba(255,255,255,.82); }
+
+.sf-contact svg { flex: none; width: 17px; height: 17px; margin-top: 6px; fill: none; stroke: var(--rm-orange); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.sf-contact a { padding: 0; font-size: 14px; }
+
+.sf-social { display: flex; gap: 10px; margin-top: 22px; }
+
+.sf-social a {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; padding: 0;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255,255,255,.04);
+  transition: background-color .2s ease, border-color .2s ease, transform .25s var(--rm-ease);
+}
+
+.sf-social svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.sf-social a:hover, .sf-social a:focus-visible { color: #fff; background: var(--rm-orange); border-color: var(--rm-orange); transform: translateY(-3px); }
+
+@media (max-width: 1024px) {
+  .sf-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+  .sf-cta { grid-column: 1 / -1; }
+  .site-footer::before { width: 420px; height: 420px; }
+}
+
+@media (max-width: 640px) {
+  .site-footer { padding: 104px 0 108px; }
+  .site-footer { --sf-r: 20px; }
+  .site-footer::before { width: 320px; height: 320px; left: -110px; }
+  .sf-copy::before { display: none; }
+  .sf-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .sf-col:last-child { grid-column: 1 / -1; }
+  .sf-logo { padding: 14px var(--sf-gutter) 16px 24px; border-bottom-left-radius: 28px; }
+  .sf-copy { right: 0; padding: 14px 20px 14px 84px; font-size: 12px; border-top-right-radius: 26px; }
+}

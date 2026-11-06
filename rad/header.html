@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پیش‌نمایش هدر جدید | راد مدرن</title>
+<meta name="description" content="پیش‌نمایش مستقل بخش هدر مدرن وب‌سایت راد مدرن.">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="design-system.css">
+<link rel="stylesheet" href="header.css">
+<style>
+  body { margin: 0; font-family: var(--rm-font); background: var(--rm-home-canvas); min-height: 120vh; }
+  .demo-content { max-width: 900px; margin: 60px auto; padding: 32px; text-align: center; }
+  .demo-content h1 { color: var(--rm-blue); margin-bottom: 12px; }
+  .demo-content p { color: var(--rm-gray); line-height: 2; }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-container">
+    <!-- لوگو و نشان برند -->
+    <a href="index.html" class="header-brand" aria-label="صفحه اصلی راد مدرن">
+      <span class="brand-logo" aria-hidden="true"><img class="logo-img" src="logo.png" alt="" width="44" height="44"></span>
+      <div class="brand-text">
+        <strong class="brand-name">راد مدرن</strong>
+        <span class="brand-tag">استودیو راهکارهای دیجیتال</span>
+      </div>
+    </a>
+
+    <!-- منوی ناوبری اصلی دسکتاپ -->
+    <nav class="header-nav" aria-label="منوی اصلی">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link is-active" aria-current="page">خانه</a></li>
+        <li><a href="#services" class="nav-link">خدمات</a></li>
+        <li><a href="nemonekar.html" class="nav-link">نمونه‌کارها</a></li>
+        <li><a href="about.html" class="nav-link">درباره ما</a></li>
+        <li><a href="maghalat.html" class="nav-link">مقالات</a></li>
+        <li><a href="contact.html" class="nav-link">تماس با ما</a></li>
+      </ul>
+    </nav>
+
+    <!-- اکشن‌ها و دکمه تماس -->
+    <div class="header-actions">
+
+      <!-- دکمه همبرگری موبایل -->
+      <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="باز کردن منوی موبایل" aria-expanded="false" aria-controls="mobileNav">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- منوی کشویی موبایل (Drawer) -->
+  <div class="mobile-drawer" id="mobileNav" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="header-brand">
+          <span class="brand-logo" aria-hidden="true"><img class="logo-img" src="logo.png" alt="" width="44" height="44"></span>
+          <div class="brand-text">
+            <strong class="brand-name">راد مدرن</strong>
+            <span class="brand-tag">استودیو راهکارهای دیجیتال</span>
+          </div>
+        </a>
+        <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="بستن منو">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link is-active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>خانه</a></li>
+        <li><a href="#services" class="drawer-link"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>خدمات</a></li>
+        <li><a href="nemonekar.html" class="drawer-link"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>نمونه‌کارها</a></li>
+        <li><a href="about.html" class="drawer-link"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>درباره ما</a></li>
+        <li><a href="maghalat.html" class="drawer-link"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>مقالات</a></li>
+        <li><a href="contact.html" class="drawer-link"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>تماس با ما</a></li>
+      </ul>
+
+      <div class="drawer-footer">
+        <a href="contact.html" class="btn btn-primary" style="width:100%">شروع همکاری و مشاوره</a>
+        <div class="drawer-social" role="group" aria-label="راه‌های ارتباط سریع">
+        <a class="hc hc--call" href="tel:+989120000000" aria-label="تماس تلفنی" title="تماس تلفنی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a class="hc hc--tg" href="https://t.me/radmodern" target="_blank" rel="noopener" aria-label="تلگرام" title="تلگرام"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></a>
+        <a class="hc hc--wa" href="https://wa.me/989120000000" target="_blank" rel="noopener" aria-label="واتساپ" title="واتساپ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg></a>
+      </div>
+        <a href="mailto:info@radmodern.ir" class="drawer-contact-line">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <span dir="ltr">info@radmodern.ir</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="demo-content">
+  <div class="rm-panel" style="padding: 40px;">
+    <h1>هدر مدرن، شیشه‌ای و چسبان راد مدرن</h1>
+    <p>این صفحه پیش‌نمایش مستقل از هدر بازطراحی‌شده است. با اسکرول کردن به پایین، تغییر اندازه ظریف و افکت سایه و شیشه‌ای بودن (Glassmorphism) هدر را مشاهده کنید. در سایز موبایل نیز دکمه همبرگری مدرن و منوی کشویی واکنش‌گرا فعال می‌شود.</p>
+    <a href="index.html" class="btn btn-primary" style="margin-top: 16px;">بازگشت به صفحه اصلی</a>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

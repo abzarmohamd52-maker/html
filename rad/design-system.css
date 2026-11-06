@@ -1,0 +1,206 @@
+/* RadModern Design System — single source of truth */
+:root {
+  /* Brand colors */
+  --rm-blue:#0D4B8D; --rm-blue-dark:#093566; --rm-orange:#FF7629; --rm-orange-dark:#E5620F;
+  --rm-blue-light:#F0F6FE; --rm-gray:#64748B; --rm-white:#FFFFFF; --rm-text-strong:#172B4D;
+  --rm-line:#DCE6F3; --rm-border:1px solid var(--rm-line); --rm-footer:#102F80; --rm-home-canvas:#F5F9FE; --rm-home-band:#EAF2FD;
+  /* Legacy illustration and editorial palette; change colors here, not in page CSS. */
+  --rm-palette-c6d8ee: #C6D8EE;
+  --rm-palette-123a9c: #123A9C;
+  --rm-palette-2f6bff: #2F6BFF;
+  --rm-palette-4aa3d8: #4AA3D8;
+  --rm-palette-e9b36a: #E9B36A;
+  --rm-palette-0d1f4f: #0D1F4F;
+  --rm-palette-2a4fb8: #2A4FB8;
+  --rm-palette-8fb4ff: #8FB4FF;
+  --rm-palette-4a6fe0: #4A6FE0;
+  --rm-palette-f4f7ff: #F4F7FF;
+  --rm-palette-1b2a5e: #1B2A5E;
+  --rm-palette-0a1433: #0A1433;
+  --rm-palette-c9d6ff: #C9D6FF;
+  --rm-palette-eaf3ff: #EAF3FF;
+  --rm-palette-12308a: #12308A;
+  --rm-palette-b8c6f5: #B8C6F5;
+  --rm-palette-5d6b95: #5D6B95;
+  --rm-palette-c2410c: #C2410C;
+  --rm-palette-0c1330: #0C1330;
+  --rm-palette-2f5bea: #2F5BEA;
+  --rm-palette-eaf0fa: #EAF0FA;
+  --rm-palette-52627b: #52627B;
+  --rm-palette-253f6810: #253F6810;
+  --rm-palette-dbeaf6: #DBEAF6;
+  --rm-palette-edf3ff: #EDF3FF;
+  --rm-palette-e7edf6: #E7EDF6;
+  --rm-palette-677891: #677891;
+  --rm-palette-8997ad: #8997AD;
+  --rm-palette-e5ebf5: #E5EBF5;
+  --rm-palette-a0aec0: #A0AEC0;
+  --rm-palette-eaf0f8: #EAF0F8;
+  --rm-palette-263e6812: #263E6812;
+  --rm-palette-dceaf5: #DCEAF5;
+  --rm-palette-f0f3f8: #F0F3F8;
+  --rm-palette-fff7f0: #FFF7F0;
+  --rm-palette-e8edf5: #E8EDF5;
+  --rm-palette-253f6818: #253F6818;
+  --rm-palette-44546f: #44546F;
+  --rm-palette-eaf2ff: #EAF2FF;
+  --rm-palette-d6e0ff: #D6E0FF;
+  --rm-palette-fff1e6: #FFF1E6;
+  --rm-palette-1b8a4b: #1B8A4B;
+  --rm-palette-263e6814: #263E6814;
+  --rm-palette-ffb380: #FFB380;
+  --rm-palette-eaf2fc: #EAF2FC;
+  --rm-palette-f7fafe: #F7FAFE;
+  --rm-palette-ff9a5a: #FF9A5A;
+  --rm-palette-0a3a6e: #0A3A6E;
+  --rm-palette-e8eef6: #E8EEF6;
+  --rm-palette-1a5fad: #1A5FAD;
+  --rm-palette-0a2d5c: #0A2D5C;
+  --rm-palette-d23b3b: #D23B3B;
+  --rm-palette-e6f0fc: #E6F0FC;
+  --rm-palette-e3eaf5: #E3EAF5;
+  --rm-palette-f1f5f9: #F1F5F9;
+  --rm-palette-eef2f7: #EEF2F7;
+  --rm-palette-1a2cf0: #1A2CF0;
+  --rm-palette-070c5c: #070C5C;
+  --rm-palette-2a3cff: #2A3CFF;
+  --rm-palette-3a55ff: #3A55FF;
+  --rm-palette-0a0a4a: #0A0A4A;
+  --rm-palette-8fa0ff: #8FA0FF;
+  --rm-palette-7a89a6: #7A89A6;
+  --rm-palette-f0f4ff: #F0F4FF;
+  --rm-palette-4a5d8a: #4A5D8A;
+  /* Shared translucent colors and overlays */
+  --rm-overlay-orange-legacy-4: rgba(255,122,26,.4);
+  --rm-overlay-white-18: rgba(255,255,255,.18);
+  --rm-overlay-white-12: rgba(255,255,255,.12);
+  --rm-overlay-white-45: rgba(255,255,255,.45);
+  --rm-overlay-orange-legacy-5: rgba(255,122,26,.5);
+  --rm-overlay-orange-legacy-16: rgba(255,122,26,.16);
+  --rm-overlay-orange-legacy-25: rgba(255,122,26,.25);
+  --rm-overlay-navy-shadow-25: rgba(20,41,107,.25);
+  --rm-overlay-orange-legacy-35: rgba(255,122,26,.35);
+  --rm-overlay-orange-legacy-22: rgba(255,122,26,.22);
+  --rm-overlay-orange-legacy-15: rgba(255,122,26,.15);
+  --rm-overlay-white-25: rgba(255,255,255,.25);
+  --rm-overlay-blue-8: rgba(13,75,141,.08);
+  --rm-overlay-orange-12: rgba(255, 118, 41, .12);
+  --rm-overlay-orange-18: rgba(255, 118, 41, .18);
+  --rm-overlay-blue-14: rgba(13,75,141,.14);
+  --rm-overlay-blue-12: rgba(13, 75, 141, .12);
+  --rm-overlay-orange-2: rgba(255, 118, 41, .2);
+  --rm-overlay-blue-25: rgba(13,75,141,.25);
+  --rm-overlay-blue-5: rgba(13, 75, 141, .05);
+  --rm-overlay-blue-2: rgba(13, 75, 141, .2);
+  --rm-overlay-orange-15: rgba(255, 118, 41, .15);
+  --rm-overlay-white-8: rgba(255, 255, 255, .08);
+  --rm-overlay-white-1: rgba(255, 255, 255, .1);
+  --rm-overlay-orange-28: rgba(255, 118, 41, .28);
+  --rm-overlay-orange-14: rgba(255, 118, 41, .14);
+  --rm-overlay-white-88: rgba(255, 255, 255, .88);
+  --rm-overlay-white-78: rgba(255,255,255,.78);
+  --rm-overlay-white-82: rgba(255,255,255,.82);
+  --rm-overlay-white-85: rgba(255, 255, 255, .85);
+  --rm-overlay-blue-13: rgba(13, 75, 141, .13);
+  --rm-overlay-white-86: rgba(255,255,255,.86);
+  --rm-overlay-orange-55: rgba(255,118,41,.55);
+  --rm-overlay-orange-0: rgba(255,118,41,0);
+  --rm-overlay-vivid-blue-18: rgba(26,44,240,.18);
+  --rm-overlay-indigo-75: rgba(10,21,144,.75);
+  --rm-overlay-black-45: rgba(0,0,10,.45);
+  --rm-overlay-deep-indigo-7: rgba(5,8,70,.7);
+  --rm-overlay-white-22: rgba(255,255,255,.22);
+  --rm-overlay-vivid-blue-32: rgba(26,44,240,.32);
+  --rm-overlay-white-6: rgba(255,255,255,.6);
+  --rm-overlay-white-14: rgba(255,255,255,.14);
+  --rm-overlay-white-7: rgba(255,255,255,.7);
+  --rm-overlay-white-2: rgba(255,255,255,.2);
+  /* Additional inline illustration palette */
+  --rm-palette-1a2cf0: #1A2CF0;
+  --rm-palette-0a1590: #0A1590;
+  --rm-palette-5b73ff: #5B73FF;
+  --rm-palette-7a1fd1: #7A1FD1;
+  --rm-palette-2a0a6e: #2A0A6E;
+  --rm-palette-ff5fbf: #FF5FBF;
+  --rm-palette-ff8a3d: #FF8A3D;
+  --rm-palette-ffd08a: #FFD08A;
+  --rm-palette-15a05b: #15A05B;
+  --rm-palette-0b3d3a: #0B3D3A;
+  --rm-palette-9bf5b9: #9BF5B9;
+  /* Typography */
+  --rm-font:"Vazirmatn",Tahoma,system-ui,sans-serif;
+  --rm-font-display:"Barlow Condensed",Impact,sans-serif;
+  --rm-font-persian-display:"Aref Ruqaa",var(--rm-font);
+  --rm-text-xs:.75rem; --rm-text-sm:.875rem; --rm-text-base:1rem; --rm-text-lg:1.125rem;
+  --rm-text-xl:1.375rem; --rm-text-2xl:1.75rem; --rm-leading-body:1.9; --rm-leading-heading:1.5;
+  /* 4px spacing scale */
+  --rm-space-1:.25rem; --rm-space-2:.5rem; --rm-space-3:.75rem; --rm-space-4:1rem;
+  --rm-space-5:1.25rem; --rm-space-6:1.5rem; --rm-space-8:2rem; --rm-space-10:2.5rem;
+  --rm-space-12:3rem; --rm-space-16:4rem;
+  /* Shape and elevation */
+  --rm-radius-sm:.5rem; --rm-radius-md:.75rem; --rm-radius-card:1rem; --rm-radius-panel:1.25rem; --rm-radius-pill:999px;
+  --rm-shadow-card:0 6px 24px rgba(13,75,141,.08); --rm-shadow-card-hover:0 14px 34px rgba(13,75,141,.14);
+  --rm-shadow-button:0 8px 20px rgba(255,118,41,.28); --rm-shadow-button-hover:0 12px 28px rgba(255,118,41,.36);
+  --rm-ease:cubic-bezier(.22,1,.36,1); --ease:var(--rm-ease);
+  /* Backward-compatible aliases — values still come from tokens above */
+  --blue:var(--rm-blue); --navy:var(--rm-blue-dark); --dark:var(--rm-blue); --ink:var(--rm-text-strong);
+  --orange:var(--rm-orange); --accent:var(--rm-orange); --accent-ink:var(--rm-white);
+  --orange-dark:var(--rm-orange-dark); --accent-dark:var(--rm-orange-dark); --orange-text:var(--rm-orange-dark);
+  --gray:var(--rm-gray); --muted:var(--rm-gray); --light:var(--rm-blue-light); --soft:var(--rm-blue-light);
+  --white:var(--rm-white); --bg:var(--rm-white); --surface:var(--rm-white); --line:var(--rm-line);
+  --border:var(--rm-line); --shadow:var(--rm-shadow-card);
+  --rm-color-brand:var(--rm-blue); --rm-color-brand-strong:var(--rm-blue-dark);
+  --rm-color-accent:var(--rm-orange-dark); --rm-color-text:var(--rm-text-strong);
+  --rm-color-muted:var(--rm-gray); --rm-color-canvas:var(--rm-white);
+  --rm-color-surface:var(--rm-home-canvas); --rm-color-border:var(--rm-line);
+  --hm-bg:var(--rm-home-canvas); --hm-band:var(--rm-home-band); --hm-card-shadow:var(--rm-shadow-card);
+  --hdr-navy:var(--rm-blue); --hdr-blue:var(--rm-blue); --hdr-orange:var(--rm-orange);
+  --hdr-muted:#C6D8EE; --hdr-white:var(--rm-white); --hdr-font:var(--rm-font);
+  --f-bg:var(--rm-footer); --f-ink:var(--rm-white); --f-mut:rgba(255,255,255,.78); --f-line:rgba(255,255,255,.18);
+  --why-bg:var(--rm-home-band); --ch-bg:var(--rm-white); --cta-bg:var(--rm-blue);
+}
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{color-scheme:light}
+html,body{font-family:var(--rm-font)}
+body,button,input,select,textarea{font-family:var(--rm-font)}
+button,input,select,textarea{font-size:inherit}
+h1,h2,h3,h4,h5,h6{line-height:var(--rm-leading-heading)}
+
+/* Shared button primitive: one anatomy, role-based variants. */
+.btn,.button,.consult,.submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--rm-space-2);
+  min-height:44px;padding:.75rem 1.5rem;border:1px solid var(--rm-orange);border-radius:var(--rm-radius-pill);
+  background:var(--rm-orange);color:var(--rm-white);box-shadow:var(--rm-shadow-button);
+  font:700 var(--rm-text-sm)/1.4 var(--rm-font);text-align:center;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease
+}
+.btn:hover,.button:hover,.consult:hover,.submit:hover{background:var(--rm-orange-dark);border-color:var(--rm-orange-dark);color:var(--rm-white);box-shadow:var(--rm-shadow-button-hover);transform:translateY(-2px)}
+.btn:active,.button:active,.consult:active,.submit:active{transform:translateY(0)}
+.btn-primary{background:var(--rm-orange);color:var(--rm-white)}
+.btn-ghost{background:var(--rm-white);color:var(--rm-blue);border-color:var(--rm-blue);box-shadow:none}
+.btn-ghost:hover{background:var(--rm-orange);color:var(--rm-white);border-color:var(--rm-orange)}
+.btn-white,.btn--white{background:var(--rm-white);color:var(--rm-blue);border-color:var(--rm-white);box-shadow:none}
+.btn-white:hover,.btn--white:hover{background:var(--rm-orange);color:var(--rm-white);border-color:var(--rm-orange)}
+.btn svg,.button svg,.consult svg,.submit svg{width:1.125rem;height:1.125rem;flex:none}
+.btn:focus-visible,.button:focus-visible,.consult:focus-visible,.submit:focus-visible{outline:3px solid var(--rm-blue);outline-offset:3px}
+.btn:disabled,.button:disabled,.submit:disabled,.btn[aria-disabled="true"],.button[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+
+body.page-home .feat{transition:transform .2s ease,box-shadow .2s ease}
+
+/* Generic reusable panel for standalone pages and content blocks. */
+.rm-panel{
+  background:var(--rm-white);
+  border:var(--rm-border);
+  border-radius:var(--rm-radius-panel);
+  box-shadow:var(--rm-shadow-card);
+}
+
+/* Shared surface tokens for card-like components; page CSS owns layout. */
+body.page-home .card,body.page-home .work,body.page-home .tech,body.page-nemonekar .card,
+body.page-maghalat .card,body.page-maghalat .featured,body.page-article .card,body.page-contact .form-card,body.page-contact .info-card,
+body.page-about .value,body.page-about .member{
+  background:var(--rm-white);border:var(--rm-border);border-radius:var(--rm-radius-card);box-shadow:var(--rm-shadow-card);
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease
+}
+body.page-home .card:hover,body.page-home .work:hover,body.page-home .tech:hover,body.page-nemonekar .card:hover,
+body.page-maghalat .card:hover,body.page-contact .info-card:hover,body.page-about .value:hover,body.page-about .member:hover{box-shadow:var(--rm-shadow-card-hover)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}

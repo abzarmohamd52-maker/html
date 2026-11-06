@@ -1,0 +1,3296 @@
+/* =====================================================================
+   راد مدرن — فایل واحد استایل‌ها (site.css)
+   ترتیب بخش‌ها:
+     ۱) هدر مشترک همهٔ صفحات
+     ۲) استایل هر صفحه (فقط روی همان صفحه اعمال می‌شود؛ با کلاس body مثل page-home)
+     ۳) فایل پدر (رنگ‌ها و قوانین سراسری) — آخر از همه تا بر همه چیز غلبه کند
+   ===================================================================== */
+   /* ───────────────────────── ۱) هدر مدرن و واکنش‌گرا (Site Header) ───────────────────────── */
+   .site-header {
+     --hdr-navy: var(--rm-blue);
+     --hdr-blue: var(--rm-blue);
+     --hdr-orange: var(--rm-orange);
+     --hdr-white: var(--rm-white);
+     --hdr-height: 70px;
+
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     z-index: 1000;
+     width: 100%;
+     height: var(--hdr-height);
+     background: transparent;
+     backdrop-filter: none;
+     -webkit-backdrop-filter: none;
+     border-bottom: 1px solid transparent;
+     box-shadow: none;
+     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+   }
+
+   /* وقتی کاربر اسکرول کرد، هدر شیشه‌ای سفید می‌شه */
+   .site-header.is-scrolled {
+     background: rgba(255, 255, 255, 0.95);
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px);
+     border-bottom-color: rgba(220, 230, 243, 0.9);
+     box-shadow: 0 4px 24px rgba(13, 75, 141, 0.09);
+   }
+
+   /* رنگ لینک‌ها روی هیرو سفیده، بعد از اسکرول تیره می‌شه */
+   .site-header:not(.is-scrolled) .nav-link {
+     color: rgba(255, 255, 255, 0.9);
+   }
+   .site-header:not(.is-scrolled) .nav-link:hover {
+     color: #FFA466;
+   }
+   .site-header:not(.is-scrolled) .nav-link.is-active {
+     color: #ffffff;
+     font-weight: 700;
+   }
+   .site-header:not(.is-scrolled) .nav-link::after {
+     background: #FFA466;
+   }
+   .site-header:not(.is-scrolled) .brand-name {
+     color: #ffffff;
+   }
+   .site-header:not(.is-scrolled) .brand-tag {
+     color: rgba(255, 255, 255, 0.65);
+   }
+   .site-header:not(.is-scrolled) .brand-logo {
+     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+   }
+   .site-header:not(.is-scrolled) .mobile-toggle .hamburger-bar {
+     background: #ffffff;
+   }
+
+   .site-header *,
+   .site-header *::before,
+   .site-header *::after {
+     box-sizing: border-box;
+   }
+
+   .header-container {
+     max-width: 1240px;
+     margin: 0 auto;
+     padding: 14px 24px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 20px;
+     transition: padding 0.3s ease;
+   }
+
+   .site-header.is-scrolled .header-container {
+     padding-block: 10px;
+   }
+
+   /* برند و لوگو */
+   .header-brand {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     text-decoration: none;
+     color: inherit;
+     flex-shrink: 0;
+     user-select: none;
+   }
+
+   .brand-logo {
+     position: relative;
+     width: 44px;
+     height: 44px;
+     border-radius: 14px;
+     background: linear-gradient(135deg, var(--rm-blue) 0%, #1A2CF0 65%, var(--rm-orange) 100%);
+     display: grid;
+     place-items: center;
+     box-shadow: 0 8px 18px rgba(13, 75, 141, 0.22);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   .header-brand:hover .brand-logo {
+     transform: translateY(-2px) rotate(-3deg);
+     box-shadow: 0 12px 24px rgba(255, 118, 41, 0.3);
+   }
+
+   .logo-mark {
+     color: #ffffff;
+     font-family: var(--rm-font-display, "Barlow Condensed", sans-serif);
+     font-size: 24px;
+     font-weight: 800;
+     line-height: 1;
+   }
+
+   .brand-text {
+     display: flex;
+     flex-direction: column;
+   }
+
+   .brand-name {
+     font-size: 19px;
+     font-weight: 800;
+     color: var(--rm-blue);
+     line-height: 1.25;
+     letter-spacing: -0.2px;
+   }
+
+   .brand-tag {
+     font-size: 11px;
+     font-weight: 600;
+     color: var(--rm-gray);
+     line-height: 1.2;
+   }
+
+   /* منوی دسکتاپ */
+   .header-nav {
+     display: flex;
+     align-items: center;
+   }
+
+   .nav-list {
+     display: flex;
+     align-items: center;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     gap: 4px;
+   }
+
+   .nav-link {
+     display: inline-flex;
+     align-items: center;
+     padding: 6px 2px;
+     margin-inline: 14px;
+     font-size: 15px;
+     font-weight: 600;
+     color: var(--rm-text-strong);
+     text-decoration: none;
+     background: transparent !important;
+     box-shadow: none !important;
+     position: relative;
+     transition: color 0.22s ease;
+   }
+
+   .nav-link::after {
+     content: "";
+     position: absolute;
+     bottom: -4px;
+     left: 0;
+     right: 0;
+     height: 2.5px;
+     border-radius: 2px;
+     background: var(--rm-orange);
+     transform: scaleX(0);
+     transform-origin: right center;
+     transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+   }
+
+   .nav-link:hover {
+     color: var(--rm-orange);
+     background: transparent !important;
+     box-shadow: none !important;
+   }
+
+   .nav-link:hover::after {
+     transform: scaleX(1);
+   }
+
+   .nav-link.is-active {
+     color: var(--rm-blue);
+     font-weight: 700;
+     background: transparent !important;
+     box-shadow: none !important;
+   }
+
+   .nav-link.is-active::after {
+     transform: scaleX(1);
+     background: var(--rm-orange);
+   }
+
+   /* دکمه‌های اکشن هدر */
+   .header-actions {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+   }
+
+   .header-cta {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     padding: 9px 20px;
+     min-height: 42px;
+     font-size: 13.5px;
+     border-radius: 999px;
+     box-shadow: 0 4px 16px rgba(255, 118, 41, 0.25);
+     transition: all 0.25s ease;
+     text-decoration: none;
+   }
+
+   .header-cta:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 8px 24px rgba(255, 118, 41, 0.38);
+   }
+
+   .header-cta svg {
+     width: 16px;
+     height: 16px;
+     transition: transform 0.25s ease;
+   }
+
+   .header-cta:hover svg {
+     transform: translateX(-4px);
+   }
+
+   /* دکمه همبرگری موبایل */
+   .mobile-toggle {
+     display: none;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 44px;
+     height: 44px;
+     padding: 0;
+     background: transparent;
+     border: 1px solid var(--rm-line);
+     border-radius: 12px;
+     cursor: pointer;
+     color: var(--rm-blue);
+     transition: all 0.2s ease;
+   }
+
+   .mobile-toggle:hover {
+     background: rgba(13, 75, 141, 0.06);
+     border-color: var(--rm-blue);
+   }
+
+   .hamburger-bar {
+     display: block;
+     width: 20px;
+     height: 2px;
+     background: currentColor;
+     border-radius: 2px;
+     transition: transform 0.3s ease, opacity 0.3s ease;
+   }
+
+   .hamburger-bar + .hamburger-bar {
+     margin-top: 5px;
+   }
+
+   .mobile-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+     transform: translateY(7px) rotate(45deg);
+   }
+   .mobile-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+     opacity: 0;
+   }
+   .mobile-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+     transform: translateY(-7px) rotate(-45deg);
+   }
+
+   /* منوی کشویی موبایل (Drawer) */
+   .mobile-drawer {
+     position: fixed;
+     inset: 0;
+     z-index: 2000;
+     pointer-events: none;
+     visibility: hidden;
+     transition: visibility 0.35s ease;
+   }
+
+   .mobile-drawer.is-open {
+     pointer-events: auto;
+     visibility: visible;
+   }
+
+   .drawer-backdrop {
+     position: absolute;
+     inset: 0;
+     background: rgba(7, 12, 92, 0.45);
+     backdrop-filter: blur(6px);
+     -webkit-backdrop-filter: blur(6px);
+     opacity: 0;
+     transition: opacity 0.35s ease;
+   }
+
+   .mobile-drawer.is-open .drawer-backdrop {
+     opacity: 1;
+   }
+
+   .drawer-content {
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     width: min(340px, 86vw);
+     background: #ffffff;
+     box-shadow: -8px 0 36px rgba(0, 0, 10, 0.2);
+     display: flex;
+     flex-direction: column;
+     transform: translateX(100%);
+     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+     padding: 24px;
+     overflow-y: auto;
+   }
+
+   .mobile-drawer.is-open .drawer-content {
+     transform: translateX(0);
+   }
+
+   .drawer-header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding-bottom: 20px;
+     border-bottom: 1px solid var(--rm-line);
+     margin-bottom: 20px;
+   }
+
+   .drawer-close {
+     display: grid;
+     place-items: center;
+     width: 40px;
+     height: 40px;
+     border-radius: 12px;
+     background: var(--rm-blue-light);
+     border: none;
+     color: var(--rm-blue);
+     cursor: pointer;
+     transition: all 0.2s ease;
+   }
+
+   .drawer-close:hover {
+     background: var(--rm-orange);
+     color: #fff;
+   }
+
+   .drawer-close svg {
+     width: 22px;
+     height: 22px;
+   }
+
+   .drawer-links {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     flex-direction: column;
+     gap: 6px;
+     flex: 1;
+   }
+
+   .drawer-link {
+     display: flex;
+     align-items: center;
+     gap: 14px;
+     padding: 13px 16px;
+     border-radius: 14px;
+     color: var(--rm-text-strong);
+     text-decoration: none;
+     font-size: 15px;
+     font-weight: 600;
+     transition: all 0.2s ease;
+   }
+
+   .drawer-link svg {
+     width: 20px;
+     height: 20px;
+     color: var(--rm-gray);
+     fill: none;
+     stroke: currentColor;
+     stroke-width: 2;
+     stroke-linecap: round;
+     stroke-linejoin: round;
+     transition: color 0.2s ease;
+   }
+
+   .drawer-link:hover,
+   .drawer-link.is-active {
+     background: var(--rm-blue-light);
+     color: var(--rm-blue);
+   }
+
+   .drawer-link:hover svg,
+   .drawer-link.is-active svg {
+     color: var(--rm-orange);
+   }
+
+   .drawer-footer {
+     margin-top: 24px;
+     padding-top: 20px;
+     border-top: 1px solid var(--rm-line);
+     display: flex;
+     flex-direction: column;
+     gap: 14px;
+   }
+
+   .drawer-contact-line {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+     color: var(--rm-gray);
+     text-decoration: none;
+     font-size: 13px;
+     font-weight: 600;
+   }
+
+   .drawer-contact-line svg {
+     width: 16px;
+     height: 16px;
+     color: var(--rm-blue);
+   }
+
+   @media (max-width: 960px) {
+     .header-nav { display: none; }
+     .mobile-toggle { display: flex; }
+     .header-cta { display: none; }
+   }
+
+   /* ───────────────────────── هیرو ویدیویی تمام‌صفحه با متن روی ویدیو ───────────────────────── */
+   .hero-video-hero {
+     position: relative;
+     width: 100%;
+     height: 100vh;
+     height: 100svh;
+     min-height: 560px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
+     background: #060c22;
+     color: #ffffff;
+     padding: 0;
+     /* هیرو از زیر هدر شروع می‌شه ولی هدر روش فلوت هستش */
+     margin-top: 0;
+   }
+
+   .hero-video-bg {
+     position: absolute;
+     inset: 0;
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+     z-index: 1;
+   }
+
+   .hero-video-element {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+     pointer-events: none;
+   }
+
+   /* لایه تاریک گرادیانت برای وضوح و خوانایی عالی متن در سمت چپ و نمایان بودن کامل ویدیو در مرکز و راست */
+   .hero-video-scrim {
+     position: absolute;
+     inset: 0;
+     z-index: 2;
+     background:
+       linear-gradient(to right, rgba(4, 8, 26, 0.92) 0%, rgba(4, 8, 26, 0.76) 38%, rgba(4, 8, 26, 0.15) 70%, rgba(4, 8, 26, 0.3) 100%),
+       linear-gradient(to bottom, rgba(4, 8, 26, 0.35) 0%, transparent 40%, rgba(4, 8, 26, 0.75) 100%);
+     backdrop-filter: blur(0.5px);
+     -webkit-backdrop-filter: blur(0.5px);
+   }
+
+   .hero-overlay-content {
+     position: relative;
+     z-index: 3;
+     width: 100%;
+     max-width: 1260px;
+     margin: 0 auto;
+     padding: 0 36px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end; /* در چیدمان راست‌به‌چپ (RTL)، این ویژگی کل کادر را به سمت چپ صفحه می‌برد */
+     text-align: right;
+   }
+
+   /* انتقال کامل متن هیرو به سمت چپ صفحه تا ویدیو در سمت راست و مرکز کاملاً مشخص باشد */
+   .hero-text-block {
+     max-width: 580px;
+     width: 100%;
+     margin-right: auto;
+     margin-left: 0; /* هل دادن به سمت چپ */
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     text-align: right;
+   }
+
+   .hero-overlay-badge {
+     align-self: flex-start;
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     padding: 6px 16px;
+     border-radius: 999px;
+     background: rgba(255, 255, 255, 0.12);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+     border: 1px solid rgba(255, 255, 255, 0.22);
+     color: #ffffff;
+     font-size: 12.5px;
+     font-weight: 700;
+     margin-bottom: 14px;
+     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+   }
+
+   .badge-dot-live {
+     width: 8px;
+     height: 8px;
+     border-radius: 50%;
+     background: var(--rm-orange);
+     box-shadow: 0 0 0 4px rgba(255, 118, 41, 0.35);
+     animation: rmPulse 2s infinite;
+   }
+
+   .hero-overlay-h1 {
+     margin: 0 0 14px;
+     font-size: clamp(26px, 3.4vw, 40px);
+     font-weight: 800;
+     line-height: 1.35;
+     color: #ffffff;
+     letter-spacing: -0.5px;
+     text-align: right;
+     text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+   }
+
+   .gradient-text-hero {
+     background: linear-gradient(135deg, #FF7629 0%, #FFA466 50%, #4FA3FF 100%);
+     -webkit-background-clip: text;
+     background-clip: text;
+     color: transparent;
+     display: inline-block;
+   }
+
+   .hero-overlay-desc {
+     margin: 0 0 20px;
+     font-size: clamp(13.5px, 1.25vw, 15.5px);
+     line-height: 1.95;
+     color: rgba(240, 246, 255, 0.92);
+     max-width: 52ch;
+     text-align: right;
+     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+   }
+
+   .hero-overlay-desc strong {
+     color: #FFA466;
+     font-weight: 700;
+   }
+
+   .hero-overlay-buttons {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     gap: 12px;
+     margin-bottom: 24px;
+     width: 100%;
+   }
+
+   .btn-hero-lg {
+     min-height: 44px;
+     padding: 0.72rem 1.8rem;
+     font-size: 14px;
+     border-radius: 999px;
+     background: var(--rm-orange);
+     color: #ffffff;
+     box-shadow: 0 6px 20px rgba(255, 118, 41, 0.35);
+   }
+
+   .btn-hero-lg:hover {
+     background: var(--rm-orange-dark);
+     transform: translateY(-2px);
+     box-shadow: 0 10px 26px rgba(255, 118, 41, 0.5);
+   }
+
+   .btn-hero-outline {
+     min-height: 44px;
+     padding: 0.72rem 1.6rem;
+     font-size: 14px;
+     border-radius: 999px;
+     background: rgba(255, 255, 255, 0.12);
+     color: #ffffff;
+     border: 1px solid rgba(255, 255, 255, 0.35);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     text-decoration: none;
+     font-weight: 700;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     transition: all 0.25s ease;
+   }
+
+   .btn-hero-outline:hover {
+     background: rgba(255, 255, 255, 0.25);
+     border-color: #ffffff;
+     color: #ffffff;
+     transform: translateY(-2px);
+   }
+
+   .hero-overlay-stats-bar {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     gap: clamp(12px, 2vw, 24px);
+     padding: 12px 20px;
+     border-radius: 16px;
+     background: rgba(13, 27, 72, 0.62);
+     backdrop-filter: blur(16px);
+     -webkit-backdrop-filter: blur(16px);
+     border: 1px solid rgba(255, 255, 255, 0.16);
+     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+   }
+
+   .hero-stat-card {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+   }
+
+   .hero-stat-card strong {
+     font-size: clamp(18px, 2.2vw, 22px);
+     font-weight: 800;
+     color: #FFA466;
+   }
+
+   .hero-stat-card span {
+     font-size: 12px;
+     font-weight: 600;
+     color: rgba(255, 255, 255, 0.9);
+   }
+
+   .hero-stat-sep {
+     width: 1px;
+     height: 22px;
+     background: rgba(255, 255, 255, 0.18);
+   }
+
+   /* کنترل‌های شناور ویدیو در گوشه هیرو */
+   .hero-floating-controls {
+     position: absolute;
+     bottom: 18px;
+     right: 24px;
+     z-index: 5;
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     padding: 4px 10px;
+     border-radius: 999px;
+     background: rgba(5, 10, 30, 0.65);
+     backdrop-filter: blur(14px);
+     -webkit-backdrop-filter: blur(14px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+   }
+
+   .hero-ctrl-btn {
+     background: transparent;
+     border: none;
+     color: #ffffff;
+     padding: 6px;
+     border-radius: 50%;
+     cursor: pointer;
+     display: grid;
+     place-items: center;
+     transition: all 0.2s ease;
+     position: relative;
+   }
+
+   .hero-ctrl-btn:hover {
+     background: rgba(255, 255, 255, 0.2);
+     transform: scale(1.1);
+   }
+
+   .hero-ctrl-btn svg {
+     width: 16px;
+     height: 16px;
+   }
+
+   .icon-pause { display: none; }
+   .hero-video-hero.is-playing .icon-play { display: none; }
+   .hero-video-hero.is-playing .icon-pause { display: block; }
+
+   .icon-sound-on { display: none; }
+   .icon-sound-off { display: block; }
+   .hero-video-hero.is-unmuted .icon-sound-on { display: block; }
+   .hero-video-hero.is-unmuted .icon-sound-off { display: none; }
+
+   .icon-fs-exit { display: none; }
+   :fullscreen .icon-fs-enter,
+   :-webkit-full-screen .icon-fs-enter { display: none; }
+   :fullscreen .icon-fs-exit,
+   :-webkit-full-screen .icon-fs-exit { display: block; }
+
+   .hero-ctrl-btn--fs {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     padding-inline: 10px;
+     border-radius: 999px;
+     color: #FFA466;
+   }
+
+   .fs-pill-tag {
+     font-size: 11px;
+     font-weight: 700;
+     white-space: nowrap;
+   }
+
+   /* دکمه اسکرول به پایین */
+   .hero-scroll-down {
+     position: absolute;
+     bottom: 12px;
+     left: 50%;
+     transform: translateX(-50%);
+     z-index: 4;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 4px;
+     color: rgba(255, 255, 255, 0.7);
+     text-decoration: none;
+     font-size: 10.5px;
+     font-weight: 600;
+     transition: color 0.2s, transform 0.2s;
+     animation: heroBounce 2.5s infinite;
+   }
+
+   .hero-scroll-down:hover {
+     color: #FFA466;
+   }
+
+   .mouse-icon {
+     width: 16px;
+     height: 24px;
+     border: 2px solid currentColor;
+     border-radius: 10px;
+     position: relative;
+     display: flex;
+     justify-content: center;
+   }
+
+   .mouse-wheel {
+     width: 2.5px;
+     height: 5px;
+     background: currentColor;
+     border-radius: 2px;
+     margin-top: 4px;
+     animation: mouseWheel 1.8s infinite;
+   }
+
+   @keyframes mouseWheel {
+     0% { transform: translateY(0); opacity: 1; }
+     100% { transform: translateY(9px); opacity: 0; }
+   }
+
+   @keyframes heroBounce {
+     0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+     40% { transform: translateX(-50%) translateY(-8px); }
+     60% { transform: translateX(-50%) translateY(-4px); }
+   }
+
+   /* استایل‌های تمام‌صفحه Native Fullscreen برای تگ ویدیو */
+   .hero-video-element:fullscreen,
+   .hero-video-element:-webkit-full-screen {
+     width: 100vw !important;
+     height: 100vh !important;
+     max-height: none !important;
+     object-fit: contain !important;
+     background: #000 !important;
+     z-index: 999999 !important;
+     pointer-events: auto !important;
+   }
+
+   @media (max-width: 768px) {
+     .hero-video-hero {
+       height: calc(100svh - 60px);
+       min-height: 500px;
+     }
+     .hero-overlay-content {
+       align-items: center;
+       padding: 0 20px;
+     }
+     .hero-text-block {
+       max-width: 100%;
+       align-items: center;
+       text-align: center;
+       margin: 0 auto;
+     }
+     .hero-overlay-badge {
+       align-self: center;
+     }
+     .hero-overlay-h1 {
+       text-align: center;
+     }
+     .hero-overlay-desc {
+       text-align: center;
+     }
+     .hero-overlay-buttons {
+       justify-content: center;
+     }
+     .hero-floating-controls {
+       bottom: 14px;
+       right: 14px;
+     }
+     .hero-scroll-down {
+       display: none;
+     }
+     .hero-overlay-stats-bar {
+       justify-content: center;
+       flex-direction: column;
+       gap: 14px;
+       padding: 18px 24px;
+     }
+     .hero-stat-sep {
+       width: 60px;
+       height: 1px;
+     }
+     .hero-video-scrim {
+       background: linear-gradient(to bottom, rgba(4, 8, 26, 0.75) 0%, rgba(4, 8, 26, 0.85) 60%, rgba(4, 8, 26, 0.95) 100%);
+     }
+   }
+
+   /* تنظیم padding-top برای صفحاتی که هیرو ویدیویی ندارند (هدر fixed است) */
+   body:not(.page-home) #main-content {
+     padding-top: 70px;
+   }
+
+   /* دکمه‌های شناور سایت */
+   .floating-actions {
+     position: fixed;
+     bottom: 24px;
+     left: 24px;
+     z-index: 900;
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+   }
+
+   .floating-btn {
+     width: 48px;
+     height: 48px;
+     border-radius: 50%;
+     display: grid;
+     place-items: center;
+     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+     border: none;
+     cursor: pointer;
+     transition: all 0.25s ease;
+     text-decoration: none;
+   }
+
+   .floating-btn--contact {
+     background: var(--rm-orange);
+     color: #fff;
+     position: relative;
+   }
+
+   .floating-btn--contact:hover {
+     transform: scale(1.1);
+     background: var(--rm-orange-dark);
+   }
+
+   .floating-btn--contact svg {
+     width: 22px;
+     height: 22px;
+   }
+
+   .floating-btn--top {
+     background: #ffffff;
+     color: var(--rm-blue);
+     border: 1px solid var(--rm-line);
+     opacity: 0;
+     visibility: hidden;
+     transform: translateY(10px);
+   }
+
+   .floating-btn--top.is-visible {
+     opacity: 1;
+     visibility: visible;
+     transform: translateY(0);
+   }
+
+   .floating-btn--top:hover {
+     background: var(--rm-blue-light);
+     transform: translateY(-2px);
+   }
+
+   .floating-btn--top svg {
+     width: 20px;
+     height: 20px;
+   }
+   
+   /* ───────────────────────── ۲) صفحه اصلی (page-home) ───────────────────────── */
+   :where(body.page-home), :where(body.page-home) *{box-sizing:border-box}
+   :where(body.page-home){margin:0;background:var(--bg);color:var(--ink);font-family: var(--rm-font);line-height:1.8}
+   :where(body.page-home) .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+   
+   /* Hero */
+   :where(body.page-home) .hero{padding:72px 0 96px}
+   :where(body.page-home) .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+   :where(body.page-home) h1{font-size:clamp(34px,5vw,60px);line-height:1.45;font-weight:800;margin:0 0 24px;color:var(--ink)}
+   :where(body.page-home) h1 .brand{color:var(--accent)}
+   :where(body.page-home) h1 .step{display:inline-block;transform:rotate(-12deg);margin:0 4px}
+   :where(body.page-home) .lead{color:var(--muted);font-size:17px;max-width:56ch;margin:0 0 36px}
+   :where(body.page-home) .actions{display:flex;gap:16px;flex-wrap:wrap}
+
+   /* Hero visual: browser mockup */
+   :where(body.page-home) .visual{position:relative;display:flex;justify-content:center}
+   :where(body.page-home) .browser{width:100%;max-width:440px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);transform:rotate(-4deg);overflow:hidden}
+   :where(body.page-home) .browser .bar{display:flex;gap:6px;padding:12px 14px;background:var(--soft)}
+   :where(body.page-home) .browser .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+   :where(body.page-home) .browser .bar i:first-child{background:var(--accent)}
+   :where(body.page-home) .screen{padding:22px;display:grid;gap:14px}
+   :where(body.page-home) .screen .t{height:16px;width:70%;border-radius:8px;background:var(--ink);opacity:.85}
+   :where(body.page-home) .screen .t.s{width:45%;background:var(--accent);opacity:1}
+   :where(body.page-home) .screen .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+   :where(body.page-home) .screen .row b{height:70px;border-radius:12px;background:var(--soft)}
+   :where(body.page-home) .screen .row b:nth-child(2){background:var(--blue);opacity:.9}
+   :where(body.page-home) .screen .chart{height:90px;border-radius:12px;background:var(--soft);display:flex;align-items:flex-end;gap:8px;padding:10px}
+   :where(body.page-home) .screen .chart u{flex:1;border-radius:6px 6px 0 0;background:var(--blue);opacity:.8;text-decoration:none}
+   :where(body.page-home) .badge{position:absolute;bottom:-18px;inset-inline-end:8%;background:var(--accent);color:var(--rm-white);font-weight:700;font-size:14px;padding:10px 18px;border-radius:14px;box-shadow:0 10px 24px var(--rm-overlay-orange-legacy-4)}
+   
+   /* Services */
+   :where(body.page-home) .services{padding:24px 0 96px}
+   :where(body.page-home) .sec-title{display:flex;align-items:center;gap:14px;margin:0 0 36px;font-size:24px;font-weight:800}
+   :where(body.page-home) .sec-title::before{content:"";width:44px;height:3px;border-radius:3px;background:var(--accent)}
+   :where(body.page-home) .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+   :where(body.page-home) .card{padding:32px 20px;text-align:center;text-decoration:none;color:inherit;display:block}
+   :where(body.page-home) .ico{width:72px;height:72px;margin:0 auto 18px;border-radius:20px;background:var(--soft);display:grid;place-items:center;color:var(--blue)}
+   :where(body.page-home) .ico svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-home) .card h3{margin:0 0 8px;font-size:17px;font-weight:700}
+   :where(body.page-home) .card p{margin:0;color:var(--muted);font-size:14px}
+   
+   @media (max-width:960px){
+     :where(body.page-home) .hero .wrap{grid-template-columns:1fr}
+     :where(body.page-home) .visual{order:2;padding-bottom:20px}
+     :where(body.page-home) .grid{grid-template-columns:repeat(2,1fr)}
+   }
+   @media (max-width:520px){
+     :where(body.page-home) .hero{padding-top:40px}
+     :where(body.page-home) .grid{grid-template-columns:1fr}
+
+   }
+   @media (prefers-reduced-motion:reduce){:where(body.page-home), :where(body.page-home) *{transition:none!important;animation:none!important}}
+   
+   /* Shared section heads */
+   :where(body.page-home) .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:32px}
+   :where(body.page-home) .sec-head .sec-title{margin-bottom:6px}
+   :where(body.page-home) .sec-sub{margin:0;color:var(--muted);font-size:14px}
+   :where(body.page-home) .arrows{display:flex;gap:10px}
+   :where(body.page-home) .arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--blue);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow)}
+   :where(body.page-home) .arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-home) .arrow:focus-visible,:where(body.page-home) .more:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+   
+   /* Portfolio */
+   :where(body.page-home) .portfolio{padding:0 0 88px}
+   :where(body.page-home) .track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 24px;scrollbar-width:none}
+   :where(body.page-home) .track::-webkit-scrollbar{display:none}
+   :where(body.page-home) .work{flex:0 0 calc((100% - 72px)/4);min-width:240px;scroll-snap-align:start;overflow:hidden;display:flex;flex-direction:column}
+   :where(body.page-home) .shot{height:170px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+   :where(body.page-home) .s1{background:linear-gradient(135deg,var(--rm-palette-123a9c),var(--rm-palette-2f6bff))}
+   :where(body.page-home) .s2{background:linear-gradient(135deg,var(--rm-palette-4aa3d8),var(--rm-palette-e9b36a))}
+   :where(body.page-home) .s3{background:linear-gradient(135deg,var(--rm-palette-0d1f4f),var(--rm-palette-2a4fb8))}
+   :where(body.page-home) .s4{background:linear-gradient(135deg,var(--rm-palette-8fb4ff),var(--rm-palette-4a6fe0))}
+   :where(body.page-home) .lap{display:block;width:62%;height:68%;background:var(--rm-palette-f4f7ff);border:5px solid var(--rm-palette-1b2a5e);border-bottom-width:9px;border-radius:10px 10px 4px 4px;margin-bottom:-6px;position:relative}
+   :where(body.page-home) .s3 .lap{background:var(--rm-palette-0a1433);border-color:var(--rm-palette-c9d6ff)}
+   :where(body.page-home) .lap::after{content:"";position:absolute;inset:12% 10% auto;height:14%;border-radius:5px;background:var(--accent);opacity:.9}
+   :where(body.page-home) .ph{position:absolute;inset-inline-start:10%;bottom:-8px;width:16%;height:56%;background:var(--rm-white);border:4px solid var(--rm-palette-1b2a5e);border-radius:10px}
+   :where(body.page-home) .body{padding:16px 18px 8px;flex:1}
+   :where(body.page-home) .body small{display:block;color:var(--muted);font-size:12px}
+   :where(body.page-home) .body h3{margin:2px 0 12px;font-size:16px;font-weight:700}
+   :where(body.page-home) .tags{display:flex;flex-wrap:wrap;gap:8px}
+   :where(body.page-home) .tags span{font-size:12px;padding:2px 14px;border-radius:8px;background:var(--soft);color:var(--blue)}
+   :where(body.page-home) .more{display:flex;justify-content:space-between;align-items:center;margin:12px 18px 0;padding:14px 0 16px;border-top:1px solid var(--line);color:var(--ink);font-weight:700;font-size:13px;text-decoration:none}
+   :where(body.page-home) .more svg{width:16px;height:16px;fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+   
+   /* Why us — چیدمان و ظاهر اصلی در home.css */
+   :where(body.page-home) .why{--why-bg:transparent;background:transparent;padding:0}
+   :where(body.page-home) .why-grid{display:block}
+   :where(body.page-home) .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+   :where(body.page-home) .feat{text-align:center}
+   :where(body.page-home) .why-visual{display:none}
+   :where(body.page-home) .lap.big{position:absolute;inset-inline-start:6%;top:10%;width:70%;height:75%;background:var(--surface);border-color:var(--ink);margin:0}
+   :where(body.page-home) .ph.big{position:absolute;inset-inline-start:60%;bottom:6%;width:22%;height:48%;background:var(--surface);border-color:var(--ink);border-radius:14px}
+   
+   @media (max-width:960px){
+     :where(body.page-home) .work{flex-basis:calc((100% - 24px)/2)}
+     :where(body.page-home) .why-grid{grid-template-columns:1fr}
+     :where(body.page-home) .why-visual{order:-1;height:200px}
+   }
+   @media (max-width:520px){
+     :where(body.page-home) .work{flex-basis:85%}
+     :where(body.page-home) .feats{grid-template-columns:repeat(2,1fr)}
+     :where(body.page-home) .sec-head{align-items:center}
+   }
+   
+   /* Technologies */
+   :where(body.page-home) .techs{padding:8px 0 88px}
+   :where(body.page-home) .techs .sec-title{margin-bottom:6px}
+   :where(body.page-home) .techs .sec-sub{margin-bottom:28px}
+   :where(body.page-home) .tech-row{display:grid;grid-template-columns:repeat(7,1fr);gap:20px}
+   :where(body.page-home) .tech{padding:18px 8px 14px;text-align:center}
+   :where(body.page-home) .tlogo{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 8px;border-radius:50%;background:var(--c);color:var(--rm-white);font:800 18px var(--rm-font);line-height:1}
+   :where(body.page-home) .tech b{font-size:13px;font-weight:700;direction:ltr;display:block}
+   
+   /* Footer */
+   :where(body.page-home) .footer{--f-bg:var(--rm-palette-12308a);--f-ink:var(--rm-white);--f-mut:var(--rm-palette-b8c6f5);--f-line:var(--rm-overlay-white-18);background:var(--f-bg);color:var(--f-ink);padding:56px 0 24px}
+   :where(body.page-home) .f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--f-line)}
+   :where(body.page-home) .logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+   :where(body.page-home) .mark{width:52px;height:52px;border-radius:12px;background:var(--accent);display:grid;place-items:center;font:800 28px var(--rm-font);color:var(--rm-white)}
+   :where(body.page-home) .logo strong{display:block;font-size:24px;line-height:1.2}
+   :where(body.page-home) .logo small{color:var(--f-mut);font-size:12px}
+   :where(body.page-home) .f-brand p{margin:0;color:var(--f-mut);font-size:13px;max-width:44ch}
+   :where(body.page-home) .f-col{display:flex;flex-direction:column;gap:12px}
+   :where(body.page-home) .f-col h4{margin:0 0 6px;font-size:15px}
+   :where(body.page-home) .f-col a,:where(body.page-home) .f-line{color:var(--f-mut);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:8px}
+   :where(body.page-home) .f-col a:hover{color:var(--f-ink)}
+   :where(body.page-home) .f-col a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+   :where(body.page-home) .f-line svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-home) .social{display:flex;gap:10px;margin-top:6px}
+   :where(body.page-home) .social a{width:38px;height:38px;border-radius:50%;background:var(--rm-overlay-white-12);justify-content:center;color:var(--f-ink)}
+   :where(body.page-home) .social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-home) .f-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:20px;color:var(--f-mut);font-size:12px}
+   
+   @media (max-width:960px){
+     :where(body.page-home) .tech-row{grid-template-columns:repeat(4,1fr)}
+     :where(body.page-home) .f-grid{grid-template-columns:1fr 1fr}
+   }
+   @media (max-width:520px){
+     :where(body.page-home) .tech-row{grid-template-columns:repeat(2,1fr)}
+     :where(body.page-home) .f-grid{grid-template-columns:1fr}
+   }
+   
+   /* Hero image */
+   :where(body.page-home) .hero .wrap > *{min-width:0}
+   :where(body.page-home) .hero img{display:block;width:100%;max-width:620px;height:auto;max-height:760px;object-fit:contain;margin-inline:auto}
+   @media (max-width:960px){:where(body.page-home) .hero img{max-width:480px}}
+   
+   /* Real images */
+   :where(body.page-home) .shot img{width:100%;height:100%;object-fit:cover;display:block}
+   :where(body.page-home) .why-visual{height:auto;display:flex;justify-content:center}
+   :where(body.page-home) .why-visual img{display:block;width:100%;max-width:560px;max-height:560px;height:auto;object-fit:contain;border-radius:18px}
+   
+   /* =====================================================
+      لایه گرافیکی (افزوده‌شده روی استایل قبلی)
+      ===================================================== */
+   :where(body.page-home){overflow-x:hidden}
+   
+   /* ---- دکمه‌ها: حرکت + برق + نارنجی شدن با هاور ---- */
+
+   :where(body.page-home) .btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,var(--rm-overlay-white-45) 50%,transparent 70%);transform:translateX(120%);transition:transform .7s var(--ease)}
+   :where(body.page-home) .btn:hover{transform:translateY(-4px) scale(1.04)}
+   :where(body.page-home) .btn:hover::before{transform:translateX(-120%)}
+   :where(body.page-home) .btn:active{transform:translateY(0) scale(.97)}
+
+   :where(body.page-home) .btn-ghost:hover svg{transform:rotate(-12deg) scale(1.15)}
+
+   /* ---- بخش اول ---- */
+   :where(body.page-home) .hero{position:relative;overflow:hidden;padding:72px 0 130px;
+     background:radial-gradient(circle at 85% 20%,var(--rm-overlay-orange-legacy-16),transparent 40%),linear-gradient(135deg,var(--soft),var(--bg));
+     clip-path:polygon(0 0,100% 0,100% calc(100% - 56px),0 100%)}
+   :where(body.page-home) .hero .wrap{position:relative;z-index:1}
+   /* حلقه ضخیم نارنجی */
+   :where(body.page-home) .hero::before{content:"";position:absolute;bottom:-170px;left:-110px;width:380px;height:380px;border:46px solid var(--accent);border-radius:50%;opacity:.9}
+   /* الگوی نقطه‌ای */
+   :where(body.page-home) .hero::after{content:"";position:absolute;top:30px;right:5%;width:170px;height:120px;background:radial-gradient(var(--accent) 2.5px,transparent 2.5px) 0 0/18px 18px;opacity:.6}
+   :where(body.page-home) h1 .brand{background:linear-gradient(transparent 62%,var(--rm-overlay-orange-legacy-25) 62%)}
+   
+   :where(body.page-home) .hero-art{position:relative}
+   :where(body.page-home) .hero-art::before{content:"";position:absolute;top:50%;left:50%;width:64%;aspect-ratio:1;transform:translate(-50%,-50%);background:var(--accent);border-radius:50%;opacity:.9}
+   :where(body.page-home) .hero-art img{position:relative;z-index:1}
+   :where(body.page-home) .hero-chip{position:absolute;z-index:2;bottom:4%;right:0;display:flex;align-items:center;gap:8px;padding:10px 18px;font-size:12px;color:var(--rm-palette-5d6b95);background:var(--rm-white);border-radius:14px;box-shadow:0 12px 30px var(--rm-overlay-navy-shadow-25);animation:float 4s ease-in-out infinite}
+   :where(body.page-home) .hero-chip strong{font-size:20px;font-weight:800;color:var(--rm-palette-c2410c)}
+   @keyframes float{50%{transform:translateY(-10px)}}
+   
+   /* ---- نوار نارنجی متحرک ---- */
+   :where(body.page-home) .marquee{position:relative;z-index:3;overflow:hidden;margin:-44px -3% 0;padding:12px 0;color:var(--rm-palette-0c1330);background:var(--accent);transform:rotate(-1.5deg);box-shadow:0 10px 24px var(--rm-overlay-orange-legacy-35)}
+   :where(body.page-home) .marquee__track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+   :where(body.page-home) .marquee span{padding:0 20px;font-size:18px;font-weight:800;white-space:nowrap}
+   :where(body.page-home) .marquee span::after{content:"✦";margin-right:40px}
+   @keyframes marquee{to{transform:translateX(50%)}}
+   :where(body.page-home) .services{padding-top:64px}
+   
+   /* ---- عنوان بخش‌ها ---- */
+   :where(body.page-home) .sec-title::before{width:52px;height:5px;border-radius:5px}
+   
+   /* ---- کارت‌ها: بالا آمدن + خط نارنجی + آیکون نارنجی ---- */
+   
+   :where(body.page-home) .card,:where(body.page-home) .work{position:relative}
+   :where(body.page-home) .card{overflow:hidden}
+   :where(body.page-home) .card::after,:where(body.page-home) .work::after{content:"";position:absolute;inset:auto 0 0;height:5px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+   :where(body.page-home) .card:hover,:where(body.page-home) .work:hover{transform:translateY(-8px)}
+   :where(body.page-home) .card:hover::after,:where(body.page-home) .work:hover::after{transform:scaleX(1)}
+   
+   :where(body.page-home) .ico{transition:transform .4s var(--ease),background .3s,color .3s}
+   :where(body.page-home) .card:hover .ico,:where(body.page-home) .feat:hover .ico{background:var(--accent);color:var(--rm-white);transform:rotate(-8deg) scale(1.12)}
+   :where(body.page-home) .feat:hover{transform:translateY(-6px)}
+   
+   /* ---- نمونه‌کارها و مقالات ---- */
+   :where(body.page-home) .track{padding:16px 8px 36px}
+   :where(body.page-home) .shot img{transition:transform .6s var(--ease)}
+   :where(body.page-home) .work:hover .shot img{transform:scale(1.08)}
+   :where(body.page-home) .tags span{transition:background .25s,color .25s}
+   :where(body.page-home) .work:hover .tags span{background:var(--rm-overlay-orange-legacy-15);color:var(--accent)}
+   :where(body.page-home) .more{transition:color .25s}
+   :where(body.page-home) .more svg{transition:transform .3s var(--ease)}
+   :where(body.page-home) .more:hover{color:var(--accent)}
+   :where(body.page-home) .more:hover svg{transform:translateX(-6px)}
+   :where(body.page-home) .arrow{transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+   :where(body.page-home) .arrow:hover{background:var(--accent);border-color:var(--accent);color:var(--rm-white);transform:scale(1.1)}
+   :where(body.page-home) .blog{padding-top:56px;background:radial-gradient(var(--line) 2px,transparent 2px) 0 0/24px 24px}
+   
+   /* ---- چرا راد مدرن ---- */
+   :where(body.page-home) .why{position:relative;overflow:hidden}
+   :where(body.page-home) .why .wrap{position:relative;z-index:1}
+   :where(body.page-home) .why::before,:where(body.page-home) .why::after{content:"";position:absolute;border-radius:50%}
+   :where(body.page-home) .why::before{top:-90px;right:-90px;width:260px;height:260px;background:var(--accent);opacity:.14}
+   :where(body.page-home) .why::after{bottom:-110px;left:-80px;width:300px;height:300px;border:36px solid var(--accent);opacity:.14}
+   
+   /* ---- تکنولوژی‌ها ---- */
+   :where(body.page-home) .tech:hover{transform:translateY(-6px)}
+   :where(body.page-home) .tlogo{transition:transform .4s var(--ease)}
+   :where(body.page-home) .tech:hover .tlogo{transform:rotate(-12deg) scale(1.15)}
+   
+   /* ---- دعوت به اقدام ---- */
+   :where(body.page-home) .cta{--cta-bg:linear-gradient(135deg,var(--rm-palette-2f5bea),var(--rm-palette-12308a));position:relative;isolation:isolate;overflow:hidden;padding:88px 0;text-align:center;color:var(--rm-white);background:var(--cta-bg)}
+   :where(body.page-home) .cta::before,:where(body.page-home) .cta::after{content:"";position:absolute;z-index:-1;border-radius:50%}
+   :where(body.page-home) .cta::before{top:-100px;right:-70px;width:280px;height:280px;background:var(--accent)}
+   :where(body.page-home) .cta::after{bottom:-120px;left:-60px;width:320px;height:320px;border:3px solid var(--rm-overlay-white-25)}
+   :where(body.page-home) .cta h2{margin:0;font-size:clamp(22px,3vw,30px);font-weight:800}
+   :where(body.page-home) .cta p{margin:8px 0 28px;font-size:14px;opacity:.9}
+   
+   /* ---- فوتر ---- */
+   :where(body.page-home) .footer{border-top:5px solid var(--accent)}
+   :where(body.page-home) .f-col h4::after{content:"";display:block;width:24px;height:3px;margin-top:4px;background:var(--accent);border-radius:3px}
+   :where(body.page-home) .f-col a{transition:transform .25s var(--ease),color .25s}
+   :where(body.page-home) .f-col a:hover{color:var(--accent);transform:translateX(-5px)}
+   :where(body.page-home) .social a{transition:transform .3s var(--ease),background .3s}
+   :where(body.page-home) .social a:hover{background:var(--accent);color:var(--rm-white);transform:translateY(-4px) rotate(-8deg)}
+   
+   /* ---- ریسپانسیو لایه گرافیکی ---- */
+   @media (max-width:960px){
+     :where(body.page-home) .hero{padding:48px 0 110px}
+     :where(body.page-home) .hero-art{max-width:480px;margin:0 auto}
+   }
+   @media (max-width:520px){
+     :where(body.page-home) .hero::before{width:260px;height:260px;border-width:32px;bottom:-120px;left:-90px}
+     :where(body.page-home) .hero-chip{right:-6px}
+     :where(body.page-home) .marquee span{font-size:15px}
+     :where(body.page-home) .cta{padding:60px 0}
+   }
+   
+   /* ───────────────────────── ۲) نمونه‌کارها (page-nemonekar) ───────────────────────── */
+   /* ===== پایه ===== */
+     
+     :where(body.page-nemonekar), :where(body.page-nemonekar) * { margin: 0; padding: 0; box-sizing: border-box; }
+     
+     :where(body.page-nemonekar) {
+       font:400 16px/1.8 var(--rm-font);
+       color: var(--blue);
+       background: var(--white);
+     }
+     
+     :where(body.page-nemonekar) a { color: inherit; text-decoration: none; }
+     :where(body.page-nemonekar) ul { list-style: none; }
+     :where(body.page-nemonekar) :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+     
+     :where(body.page-nemonekar) .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+     :where(body.page-nemonekar) .accent { color: var(--orange); }
+     
+     /* خط نارنجی کنار عنوان‌ها */
+     :where(body.page-nemonekar) .eyebrow, :where(body.page-nemonekar) .section-title { display: flex; align-items: center; gap: 10px; }
+     :where(body.page-nemonekar) .eyebrow::before, :where(body.page-nemonekar) .section-title::before {
+       content: ""; width: 24px; height: 2px; background: var(--orange);
+     }
+     
+     /* نقطه نارنجی کنار آیتم‌ها */
+     :where(body.page-nemonekar) .dots li::before, :where(body.page-nemonekar) .note::before {
+       content: "●"; color: var(--orange); font-size: 8px; margin-left: 4px;
+     }
+     
+     /* ===== بخش معرفی ===== */
+     :where(body.page-nemonekar) .hero { padding: 60px 0 50px; }
+     :where(body.page-nemonekar) .hero__inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+     :where(body.page-nemonekar) .hero__text { flex: 1; max-width: 600px; }
+     :where(body.page-nemonekar) .eyebrow { display: inline-flex; gap: 8px; font-size: 13px; margin-bottom: 12px; }
+     :where(body.page-nemonekar) .hero h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.4; margin-bottom: 16px; }
+     :where(body.page-nemonekar) .hero__text p { font-size: 15px; color: var(--gray); }
+     
+     :where(body.page-nemonekar) .hero__card {
+       width: 340px; flex-shrink: 0; padding: 24px;
+       background: var(--light); border-radius: 16px; text-align: center;
+     }
+     :where(body.page-nemonekar) .hero__card h2 { font-size: 15px; margin-bottom: 8px; }
+     :where(body.page-nemonekar) .hero__card p { font-size: 12px; color: var(--gray); margin-bottom: 16px; }
+     :where(body.page-nemonekar) .dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 14px; font-size: 11px; }
+     
+     /* ===== پروژه‌ها ===== */
+     :where(body.page-nemonekar) .projects { padding: 40px 0 60px; background: var(--light); }
+     :where(body.page-nemonekar) .section-title { font-size: 20px; font-weight: 700; }
+     :where(body.page-nemonekar) .section-sub { font-size: 13px; color: var(--gray); margin: 6px 0 24px; }
+     
+     :where(body.page-nemonekar) .filters { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+     :where(body.page-nemonekar) .filters__buttons { display: flex; gap: 10px; }
+     :where(body.page-nemonekar) .filters__count { font-size: 12px; color: var(--gray); white-space: nowrap; }
+     
+     :where(body.page-nemonekar) .filter {
+       font: inherit; font-size: 13px; padding: 8px 20px; white-space: nowrap; cursor: pointer;
+       color: var(--blue); background: var(--white);
+       border: 1px solid var(--border); border-radius: 999px;
+       transition: background .2s, color .2s, border-color .2s;
+     }
+     :where(body.page-nemonekar) .filter:hover { border-color: var(--blue); }
+     :where(body.page-nemonekar) .filter.is-active { color: var(--white); background: var(--blue); border-color: var(--blue); }
+     
+     /* ===== کارت‌ها ===== */
+     :where(body.page-nemonekar) .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+     
+     :where(body.page-nemonekar) .card {display: flex; flex-direction: column; overflow: hidden}
+     :where(body.page-nemonekar) .card__media { aspect-ratio: 16 / 9; background: var(--blue); }
+     :where(body.page-nemonekar) .card__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+     
+     :where(body.page-nemonekar) .card__body { display: flex; flex-direction: column; flex: 1; padding: 16px 18px 18px; }
+     :where(body.page-nemonekar) .card__meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray); }
+     :where(body.page-nemonekar) .card h3 { font-size: 16px; font-weight: 700; margin: 4px 0 6px; }
+     :where(body.page-nemonekar) .card__body > p { font-size: 12px; color: var(--gray); margin-bottom: 12px; }
+     
+     :where(body.page-nemonekar) .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+     :where(body.page-nemonekar) .tags li { font-size: 10px; padding: 2px 10px; background: var(--light); border-radius: 6px; }
+     
+     :where(body.page-nemonekar) .card__link {
+       display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 12px;
+       font-size: 12px; font-weight: 700; border-top: 1px solid var(--light);
+     }
+     :where(body.page-nemonekar) .card__link::after { content: "←"; color: var(--orange); transition: transform .2s; }
+     :where(body.page-nemonekar) .card__link:hover::after { transform: translateX(-4px); }
+     
+     :where(body.page-nemonekar) .note { margin-top: 32px; text-align: center; font-size: 12px; color: var(--gray); }
+     :where(body.page-nemonekar) .note::before { margin-left: 6px; }
+     
+     /* ===== فوتر ===== */
+     :where(body.page-nemonekar) .footer { padding: 40px 0; color: var(--white); background: var(--blue); }
+     :where(body.page-nemonekar) .footer__inner { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; }
+     
+     :where(body.page-nemonekar) .footer__brand { display: flex; align-items: center; gap: 12px; }
+     :where(body.page-nemonekar) .footer__brand strong { display: block; font-size: 16px; }
+     :where(body.page-nemonekar) .footer__brand span:last-child { font-size: 11px; opacity: .75; }
+     :where(body.page-nemonekar) .footer__logo {
+       display: grid; place-items: center; width: 40px; height: 40px;
+       font-size: 20px; font-weight: 800; background: var(--orange); border-radius: 10px;
+     }
+     
+     :where(body.page-nemonekar) .footer__col { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+     :where(body.page-nemonekar) .footer__col h4 { font-size: 13px; margin-bottom: 4px; }
+     :where(body.page-nemonekar) .footer__col a { font-size: 12px; opacity: .8; }
+     :where(body.page-nemonekar) .footer__col a:hover { opacity: 1; }
+     
+     /* ===== تبلت ===== */
+     @media (max-width: 1024px) {
+       :where(body.page-nemonekar) .grid { grid-template-columns: repeat(2, 1fr); }
+       :where(body.page-nemonekar) .footer__inner { grid-template-columns: repeat(2, 1fr); }
+     }
+     
+     @media (max-width: 860px) {
+       :where(body.page-nemonekar) .hero { padding: 40px 0 32px; }
+       :where(body.page-nemonekar) .hero__inner { flex-direction: column; align-items: stretch; gap: 28px; }
+       :where(body.page-nemonekar) .hero__text { max-width: none; }
+       :where(body.page-nemonekar) .hero__card { width: 100%; }
+     }
+     
+     /* ===== موبایل ===== */
+     @media (max-width: 640px) {
+       :where(body.page-nemonekar) .container { padding: 0 16px; }
+       :where(body.page-nemonekar) .projects { padding: 32px 0 44px; }
+       :where(body.page-nemonekar) .filters { flex-direction: column; align-items: stretch; gap: 10px; }
+       :where(body.page-nemonekar) .filters__count { order: -1; }
+       :where(body.page-nemonekar) .filters__buttons { overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+       :where(body.page-nemonekar) .filters__buttons::-webkit-scrollbar { display: none; }
+       :where(body.page-nemonekar) .grid { grid-template-columns: 1fr; gap: 18px; }
+       :where(body.page-nemonekar) .footer__inner { grid-template-columns: 1fr; gap: 24px; }
+     }
+   
+   /* ───────────────────────── ۲) مقالات (page-maghalat) ───────────────────────── */
+   
+   :where(body.page-maghalat), :where(body.page-maghalat) * {
+     box-sizing: border-box;
+   }
+   
+   :where(body.page-maghalat) {
+     margin: 0;
+     direction: rtl;
+     font-family: var(--rm-font);
+     background: var(--bg);
+     color: var(--dark);
+     font-size: 13px;
+   }
+   
+   :where(body.page-maghalat) a {
+     color: inherit;
+     text-decoration: none;
+   }
+   
+   :where(body.page-maghalat) .header {
+     min-height: 76px;
+     padding: 15px max(calc((100% - 1180px) / 2), 25px);
+     background: var(--rm-white);
+     border-bottom: 1px solid var(--rm-palette-eaf0fa);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 25px;
+   }
+   
+   :where(body.page-maghalat) .logo {
+     font-weight: 800;
+     font-size: 19px;
+     color: var(--orange);
+     white-space: nowrap;
+   }
+   
+   :where(body.page-maghalat) .logo span {
+     color: var(--blue);
+   }
+   
+   :where(body.page-maghalat) .header nav {
+     display: flex;
+     gap: 24px;
+     flex-wrap: wrap;
+   }
+   
+   :where(body.page-maghalat) .header nav a {
+     font-size: 12px;
+     color: var(--rm-palette-52627b);
+   }
+   
+   :where(body.page-maghalat) .header nav a:hover {
+     color: var(--blue);
+   }
+   
+   
+   
+   :where(body.page-maghalat) .container {
+     max-width: 1180px;
+     width: calc(100% - 48px);
+     margin: auto;
+   }
+   
+   :where(body.page-maghalat) .breadcrumb {
+     color: var(--muted);
+     font-size: 11px;
+     margin: 27px 0 24px;
+   }
+   
+   :where(body.page-maghalat) .intro {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 24px;
+     margin-bottom: 30px;
+   }
+   
+   :where(body.page-maghalat) .intro h1 {
+     font-size: clamp(24px, 3vw, 36px);
+     line-height: 1.8;
+     margin: 0 0 5px;
+     font-weight: 800;
+   }
+   
+   :where(body.page-maghalat) .intro h1 span {
+     color: var(--blue);
+   }
+   
+   :where(body.page-maghalat) .intro p {
+     color: var(--muted);
+     line-height: 2.2;
+     max-width: 690px;
+     margin: 0;
+     font-size: 12px;
+   }
+   
+   :where(body.page-maghalat) .intro-label {
+     font-weight: 700;
+     white-space: nowrap;
+     border-bottom: 2px solid var(--orange);
+     padding-bottom: 8px;
+   }
+   
+   :where(body.page-maghalat) .featured {display: grid;
+     grid-template-columns: 46% 54%;
+     overflow: hidden;
+     margin-bottom: 40px}
+   
+   :where(body.page-maghalat) .featured-image {
+     min-height: 270px;
+     background: var(--rm-palette-dbeaf6);
+   }
+   
+   :where(body.page-maghalat) .featured-image img {
+     width: 100%;
+     height: 100%;
+     min-height: 270px;
+     object-fit: cover;
+     display: block;
+   }
+   
+   :where(body.page-maghalat) .featured-content {
+     padding: 28px 32px;
+     display: flex;
+     align-items: flex-start;
+     justify-content: center;
+     flex-direction: column;
+   }
+   
+   :where(body.page-maghalat) .tag {
+     display: inline-block;
+     background: var(--rm-palette-edf3ff);
+     color: var(--blue);
+     font-size: 10px;
+     padding: 5px 10px;
+     border-radius: 20px;
+   }
+   
+   :where(body.page-maghalat) .featured h2 {
+     font-size: 21px;
+     line-height: 1.9;
+     margin: 12px 0;
+   }
+   
+   :where(body.page-maghalat) .featured p,
+   :where(body.page-maghalat) .card p {
+     color: var(--muted);
+     line-height: 2.2;
+     font-size: 11px;
+   }
+   
+   :where(body.page-maghalat) .meta {
+     color: var(--muted);
+     font-size: 11px;
+     margin: 8px 0 15px;
+   }
+
+   :where(body.page-maghalat) .articles-section {
+     padding-bottom: 40px;
+   }
+   
+   :where(body.page-maghalat) .section-heading {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 20px;
+     margin-bottom: 20px;
+   }
+   
+   :where(body.page-maghalat) .section-heading h2 {
+     font-size: 21px;
+     margin: 0;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+   }
+   
+   /* خط نارنجی سمت راست (در RTL کنار عنوان از راست) */
+   :where(body.page-maghalat) .section-heading h2::before {
+     content: '';
+     display: inline-block;
+     width: 25px;
+     height: 2px;
+     background: var(--orange);
+     flex-shrink: 0;
+   }
+   
+   :where(body.page-maghalat) .filters-row {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 16px;
+     flex-wrap: wrap;
+     margin-bottom: 20px;
+   }
+   
+   :where(body.page-maghalat) .categories {
+     display: flex;
+     gap: 8px;
+     flex-wrap: wrap;
+     flex: 1;
+     min-width: 0;
+   }
+   
+   :where(body.page-maghalat) .categories button {
+     cursor: pointer;
+     background: var(--rm-white);
+     border: 1px solid var(--rm-palette-e7edf6);
+     border-radius: 24px;
+     padding: 9px 14px;
+     color: var(--rm-palette-677891);
+     font-family: inherit;
+     font-size: 11px;
+   }
+   
+   :where(body.page-maghalat) .categories button.active,
+   :where(body.page-maghalat) .categories button:hover {
+     color: var(--rm-white);
+     background: var(--blue);
+     border-color: var(--blue);
+   }
+   
+   /* باکس جستجو با آیکون سمت چپ */
+   :where(body.page-maghalat) .search-wrap {
+     position: relative;
+     flex-shrink: 0;
+     width: 260px;
+     max-width: 100%;
+   }
+   
+   :where(body.page-maghalat) .search-wrap .search-icon {
+     position: absolute;
+     left: 12px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--rm-palette-8997ad);
+     display: flex;
+     pointer-events: none;
+     z-index: 1;
+   }
+   
+   :where(body.page-maghalat) #search {
+     width: 100%;
+     border: 1px solid var(--rm-palette-e5ebf5);
+     border-radius: 8px;
+     background: var(--rm-white);
+     padding: 11px 14px 11px 38px;
+     outline: none;
+     font-family: inherit;
+     font-size: 12px;
+     direction: rtl;
+   }
+   
+   :where(body.page-maghalat) #search:focus {
+     border-color: var(--blue);
+   }
+   
+   :where(body.page-maghalat) #search::placeholder {
+     color: var(--rm-palette-a0aec0);
+   }
+   
+   :where(body.page-maghalat) .articles-grid {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 20px;
+   }
+   
+   :where(body.page-maghalat) .card {position: relative;
+     overflow: hidden}
+   
+   :where(body.page-maghalat) .card::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 3px;
+     background: var(--orange);
+     transform: scaleX(0);
+     transform-origin: center;
+     transition: transform .25s ease;
+     z-index: 3;
+     pointer-events: none;
+   }
+   
+   :where(body.page-maghalat) .card:hover {transform: translateY(-4px)}
+   
+   :where(body.page-maghalat) .card:hover::after {
+     transform: scaleX(1);
+   }
+   
+   /* لینک کل کادر */
+   :where(body.page-maghalat) .card-stretch {
+     position: absolute;
+     inset: 0;
+     z-index: 1;
+   }
+   
+   :where(body.page-maghalat) .card > img {
+     width: 100%;
+     height: 175px;
+     display: block;
+     object-fit: cover;
+     background: var(--rm-palette-dceaf5);
+   }
+   
+   :where(body.page-maghalat) .card-content {
+     padding: 15px 17px;
+     position: relative;
+   }
+   
+   :where(body.page-maghalat) .card h3 {
+     font-size: 14px;
+     line-height: 2;
+     margin: 10px 0;
+     min-height: 56px;
+   }
+   
+   :where(body.page-maghalat) .card h3 a {
+     position: relative;
+     z-index: 2;
+   }
+   
+   :where(body.page-maghalat) .card p {
+     min-height: 48px;
+     margin: 0 0 15px;
+   }
+   
+   :where(body.page-maghalat) .card-footer {
+     border-top: 1px solid var(--rm-palette-f0f3f8);
+     padding-top: 12px;
+     display: flex;
+     justify-content: space-between;
+     gap: 8px;
+     align-items: center;
+     font-size: 10px;
+     color: var(--muted);
+   }
+   
+   :where(body.page-maghalat) .card-footer a {
+     position: relative;
+     z-index: 2;
+     color: var(--blue);
+     font-weight: 700;
+     white-space: nowrap;
+     padding: 5px 11px;
+     border: 1px solid transparent;
+     border-radius: 6px;
+     transition: color .2s ease, border-color .2s ease, background .2s ease;
+   }
+   
+   :where(body.page-maghalat) .card-footer a:hover {
+     color: var(--orange) !important;
+     border-color: var(--orange);
+     background: var(--rm-palette-fff7f0);
+   }
+   
+   :where(body.page-maghalat) #empty {
+     text-align: center;
+     padding: 25px;
+     color: var(--muted);
+   }
+   
+   :where(body.page-maghalat) .footer {
+     text-align: center;
+     padding: 25px;
+     background: var(--rm-white);
+     border-top: 1px solid var(--rm-palette-e8edf5);
+     color: var(--muted);
+   }
+   
+   @media (max-width: 900px) {
+     :where(body.page-maghalat) .header {
+       flex-wrap: wrap;
+     }
+   
+     :where(body.page-maghalat) .header nav {
+       gap: 14px;
+     }
+   
+     :where(body.page-maghalat) .articles-grid {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+     }
+   
+     :where(body.page-maghalat) .featured h2 {
+       font-size: 18px;
+     }
+   }
+   
+   @media (max-width: 600px) {
+     :where(body.page-maghalat) .header {
+       padding: 15px;
+     }
+   
+     :where(body.page-maghalat) .header nav {
+       width: 100%;
+       order: 3;
+       justify-content: center;
+     }
+
+     :where(body.page-maghalat) .container {
+       width: calc(100% - 24px);
+     }
+   
+     :where(body.page-maghalat) .intro {
+       display: block;
+     }
+   
+     :where(body.page-maghalat) .intro-label {
+       display: none;
+     }
+   
+     :where(body.page-maghalat) .intro h1 {
+       font-size: 25px;
+     }
+   
+     :where(body.page-maghalat) .featured {grid-template-columns: 1fr}
+   
+     :where(body.page-maghalat) .featured-image img,
+     :where(body.page-maghalat) .featured-image {
+       height: 200px;
+       min-height: 200px;
+     }
+   
+     :where(body.page-maghalat) .featured-content {
+       padding: 20px;
+     }
+   
+     :where(body.page-maghalat) .section-heading {
+       align-items: stretch;
+       flex-direction: column;
+     }
+   
+     :where(body.page-maghalat) .filters-row {
+       flex-direction: column;
+       align-items: stretch;
+     }
+   
+     :where(body.page-maghalat) .search-wrap {
+       width: 100%;
+     }
+   
+     :where(body.page-maghalat) .articles-grid {
+       grid-template-columns: 1fr;
+     }
+   
+     :where(body.page-maghalat) .card > img {
+       height: 210px;
+     }
+   }
+   
+   /* ───────────────────────── ۲) مقاله (page-article) ───────────────────────── */
+   :where(body.page-article), :where(body.page-article) *{box-sizing:border-box}
+     :where(body.page-article){margin:0;direction:rtl;font-family: var(--rm-font);background:var(--bg);color:var(--dark);font-size:15px;line-height:2}
+     :where(body.page-article) a{color:inherit;text-decoration:none}
+     :where(body.page-article) a:focus-visible,:where(body.page-article) button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+     
+     /* Reading progress */
+     :where(body.page-article) .progress{position:fixed;top:0;inset-inline:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:right;z-index:50}
+     
+     /* Header */
+     :where(body.page-article) .header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px max(calc((100% - 1180px)/2),24px);border-bottom:1px solid var(--line);background:var(--rm-white)}
+     :where(body.page-article) .logo{font-weight:800;font-size:20px;color:var(--dark);line-height:1.4;white-space:nowrap}
+     :where(body.page-article) .logo small{display:block;font-weight:400;font-size:11px;color:var(--muted)}
+     :where(body.page-article) .header nav{display:flex;gap:26px}
+     :where(body.page-article) .header nav a{font-size:13px;color:var(--rm-palette-52627b)}
+     :where(body.page-article) .header nav a:hover,:where(body.page-article) .header nav a[aria-current]{color:var(--blue)}
+     :where(body.page-article) .views{background:var(--orange);color:var(--rm-white);font-size:11px;font-weight:700;padding:6px 14px;border-radius:30px;white-space:nowrap}
+     
+     /* Hero */
+     :where(body.page-article) .hero{max-width:1080px;margin:0 auto;padding:48px 24px 40px}
+     :where(body.page-article) .hero-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center}
+     :where(body.page-article) .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+     :where(body.page-article) .tag{display:inline-block;background:var(--rm-palette-edf3ff);color:var(--blue);font-size:11px;padding:3px 12px;border-radius:20px;line-height:1.9}
+     :where(body.page-article) .hero h1{margin:0 0 20px;font-size:clamp(26px,3.6vw,40px);line-height:1.7;font-weight:800;color:var(--blue)}
+     :where(body.page-article) .meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:12px}
+     :where(body.page-article) .avatar{width:26px;height:26px;border-radius:50%;background:var(--blue);color:var(--rm-white);display:grid;place-items:center;font-size:12px;font-weight:700}
+     :where(body.page-article) .dot{width:4px;height:4px;border-radius:50%;background:var(--muted)}
+     :where(body.page-article) .hero-img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:20px;background:var(--rm-palette-dceaf5);box-shadow:0 14px 36px var(--rm-palette-253f6818)}
+     
+     /* Layout */
+     :where(body.page-article) .layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:48px;max-width:1080px;margin:0 auto;padding:0 24px 56px;align-items:start}
+     :where(body.page-article) .content{max-width:720px}
+     :where(body.page-article) .content p{margin:0 0 18px;color:var(--rm-palette-44546f)}
+     :where(body.page-article) .content .lead{font-size:16px;color:var(--dark)}
+     :where(body.page-article) .content h2{margin:36px 0 10px;font-size:21px;line-height:1.7;color:var(--blue)}
+     :where(body.page-article) .callout{margin:28px 0;padding:18px 22px;background:var(--rm-palette-eaf2ff);border-inline-start:4px solid var(--orange);border-radius:10px}
+     :where(body.page-article) .callout p{margin:0;color:var(--blue);font-weight:500}
+     
+     :where(body.page-article) .cta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:40px;padding:24px 28px;background:var(--blue);color:var(--rm-white);border-radius:18px}
+     :where(body.page-article) .cta h3{margin:0;font-size:18px}
+     :where(body.page-article) .cta p{margin:4px 0 0;color:var(--rm-palette-d6e0ff);font-size:13px}
+
+     /* Sidebar */
+     :where(body.page-article) .side{position:sticky;top:24px;display:grid;gap:16px}
+     :where(body.page-article) .card{padding:18px}
+     :where(body.page-article) .read{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+     :where(body.page-article) .read small,:where(body.page-article) .share small{display:block;color:var(--muted);font-size:11px;line-height:1.6}
+     :where(body.page-article) .read strong{font-size:16px}
+     :where(body.page-article) .ic{flex:none;width:38px;height:38px;border-radius:50%;background:var(--rm-palette-fff1e6);color:var(--orange);display:grid;place-items:center}
+     :where(body.page-article) .ic svg,:where(body.page-article) .share-btns svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+     :where(body.page-article) .share{padding-top:14px}
+     :where(body.page-article) .share-btns{display:flex;gap:10px;margin-top:8px}
+     :where(body.page-article) .share-btns a,:where(body.page-article) .share-btns button{width:36px;height:36px;border-radius:50%;background:var(--rm-white);border:1px solid var(--line);color:var(--blue);display:grid;place-items:center;cursor:pointer;padding:0}
+     :where(body.page-article) .share-btns a:hover,:where(body.page-article) .share-btns button:hover{background:var(--blue);color:var(--rm-white)}
+     :where(body.page-article) .copied{display:block;min-height:1.6em;margin-top:6px;font-size:11px;color:var(--rm-palette-1b8a4b)}
+     :where(body.page-article) .note{display:flex;gap:12px;background:var(--rm-white);align-items:flex-start}
+     :where(body.page-article) .note strong{font-size:13px}
+     :where(body.page-article) .note p{margin:2px 0 0;font-size:12px;line-height:2;color:var(--muted)}
+     
+     /* Bottom band: feedback + related */
+     :where(body.page-article) .bottom{background:var(--rm-palette-eaf3ff);padding:56px 24px 64px}
+     :where(body.page-article) .bottom-in{max-width:1080px;margin:0 auto}
+     :where(body.page-article) .feedback{text-align:center;margin-bottom:48px}
+     :where(body.page-article) .feedback h2{margin:0 0 16px;font-size:18px;color:var(--blue)}
+     :where(body.page-article) .fb-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+     :where(body.page-article) .fb{font:700 13px var(--rm-font);padding:10px 24px;border-radius:12px;border:1px solid var(--line);background:var(--rm-white);color:var(--dark);cursor:pointer}
+     :where(body.page-article) .fb.yes{background:var(--orange);border-color:var(--orange);color:var(--rm-white)}
+     :where(body.page-article) .fb[aria-pressed="true"]{outline:3px solid var(--blue);outline-offset:2px}
+     :where(body.page-article) .fb-msg{min-height:1.8em;margin:10px 0 0;font-size:12px;color:var(--muted)}
+     :where(body.page-article) .related h2{font-size:20px;margin:0 0 22px;text-align:center;color:var(--blue)}
+     :where(body.page-article) .related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+     :where(body.page-article) .r-card{display:block;text-align:center;background:var(--rm-white);border:1px solid var(--line);border-radius:14px;padding:26px 20px 20px;transition:transform .2s,box-shadow .2s}
+     :where(body.page-article) .r-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px var(--rm-palette-263e6814)}
+     :where(body.page-article) .r-ico{display:block;font-size:30px;line-height:1;margin-bottom:16px}
+     :where(body.page-article) .r-card h3{margin:0 0 10px;font-size:14px;line-height:2;color:var(--blue)}
+     :where(body.page-article) .r-card small{color:var(--muted);font-size:11px}
+     :where(body.page-article) .maghalat_mortabet:hover{color: var(--rm-orange);}
+     :where(body.page-article) .footer{text-align:center;padding:24px;background:var(--rm-white);color:var(--muted);font-size:13px}
+     
+     @media (max-width:900px){
+       :where(body.page-article) .hero-in{grid-template-columns:1fr;gap:28px}
+       :where(body.page-article) .layout{grid-template-columns:1fr;gap:28px}
+       :where(body.page-article) .side{position:static;order:-1;grid-template-columns:1fr 1fr}
+       :where(body.page-article) .related-grid{grid-template-columns:1fr 1fr}
+     }
+     @media (max-width:600px){
+       :where(body.page-article) .header{flex-wrap:wrap;padding:14px 16px}
+       :where(body.page-article) .header nav{order:3;width:100%;justify-content:center;gap:18px}
+       :where(body.page-article) .hero{padding-top:36px}
+       :where(body.page-article) .side{grid-template-columns:1fr}
+       :where(body.page-article) .related-grid{grid-template-columns:1fr}
+     }
+     @media (prefers-reduced-motion:reduce){:where(body.page-article) .r-card{transition:none}}
+   
+  /* ───────────────────────── ۲) درباره ما (page-about) — گرافیکی + ریسپانسیو ───────────────────────── */
+  :where(body.page-about), :where(body.page-about) * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :where(body.page-about) {
+    font:400 16px/1.8 var(--rm-font);
+    color: var(--blue);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  :where(body.page-about) a { color: inherit; text-decoration: none; }
+  :where(body.page-about) ul { list-style: none; }
+  :where(body.page-about) img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  :where(body.page-about) :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+  :where(body.page-about) .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  :where(body.page-about) .accent { color: var(--orange); }
+
+  /* عنوان بخش */
+  :where(body.page-about) .head { margin-bottom: 40px; }
+  :where(body.page-about) .head h2 {
+    font-size: clamp(22px, 3.2vw, 28px); font-weight: 800; line-height: 1.4;
+  }
+  :where(body.page-about) .head h2::after {
+    content: ""; display: block; width: 44px; height: 4px; margin-top: 10px;
+    background: linear-gradient(90deg, var(--orange), var(--rm-palette-ffb380));
+    border-radius: 4px;
+  }
+  :where(body.page-about) .head p { font-size: 13.5px; color: var(--gray); margin-top: 10px; max-width: 52ch; }
+  :where(body.page-about) .head--center { text-align: center; }
+  :where(body.page-about) .head--center h2::after { margin-inline: auto; }
+  :where(body.page-about) .head--center p { margin-inline: auto; }
+
+  /* ── هیرو گرافیکی ── */
+  :where(body.page-about) .hero {
+    position: relative;
+    padding: 64px 0 80px;
+    background:
+      radial-gradient(ellipse 80% 60% at 90% 10%, var(--rm-overlay-orange-12), transparent 55%),
+      radial-gradient(ellipse 60% 50% at 5% 80%, var(--rm-overlay-blue-8), transparent 50%),
+      linear-gradient(165deg, var(--rm-palette-eaf2fc) 0%, var(--rm-palette-f7fafe) 45%, var(--rm-white) 100%);
+    overflow: hidden;
+  }
+  :where(body.page-about) .hero::before {
+    content: "";
+    position: absolute;
+    width: 220px; height: 220px;
+    bottom: -80px; left: -60px;
+    border: 28px solid var(--rm-overlay-orange-18);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  :where(body.page-about) .hero::after {
+    content: "";
+    position: absolute;
+    top: 24px; right: 6%;
+    width: 120px; height: 90px;
+    background: radial-gradient(var(--orange) 2px, transparent 2.5px) 0 0 / 16px 16px;
+    opacity: .35;
+    pointer-events: none;
+  }
+  :where(body.page-about) .hero__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  :where(body.page-about) .hero h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+  :where(body.page-about) .hero__text p {
+    font-size: 14.5px;
+    color: var(--gray);
+    margin-bottom: 28px;
+    max-width: 46ch;
+  }
+  :where(body.page-about) .hero__media {
+    position: relative;
+    max-width: 440px;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 48px var(--rm-overlay-blue-14);
+  }
+  :where(body.page-about) .hero__media::before {
+    content: "";
+    position: absolute;
+    inset: -14px 18px 18px -14px;
+    background: linear-gradient(135deg, var(--orange), var(--rm-palette-ff9a5a));
+    border-radius: 22px;
+    z-index: -1;
+    transform: rotate(-4deg);
+    opacity: .9;
+  }
+
+  /* ── داستان ── */
+  :where(body.page-about) .story { padding: 72px 0; }
+  :where(body.page-about) .story__inner {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: 52px;
+  }
+  :where(body.page-about) .story__text h3 {
+    font-size: 17px; font-weight: 700; margin-bottom: 12px;
+  }
+  :where(body.page-about) .story__text > p {
+    font-size: 13.5px; color: var(--gray); margin-bottom: 12px;
+  }
+  :where(body.page-about) .story__media {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 400px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px var(--rm-overlay-blue-12);
+  }
+  :where(body.page-about) .story__media::after {
+    content: "";
+    position: absolute;
+    inset: 12px 12px -12px -12px;
+    border: 3px solid var(--orange);
+    border-radius: 18px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* آمار */
+  :where(body.page-about) .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  :where(body.page-about) .stats li {
+    position: relative;
+    padding: 18px 20px;
+    background: linear-gradient(145deg, var(--blue), var(--rm-palette-0a3a6e));
+    color: var(--rm-white);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+  }
+  /* :where(body.page-about) .stats li::before {
+    content: "";
+    position: absolute;
+    top: -20px; left: -20px;
+    width: 70px; height: 70px;
+    background: var(--rm-overlay-orange-2);
+    border-radius: 50%;
+  } */
+  :where(body.page-about) .stats li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px var(--rm-overlay-blue-25);
+  }
+  :where(body.page-about) .stats strong {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1.3;
+    position: relative;
+  }
+  :where(body.page-about) .stats span {
+    font-size: 12.5px;
+    opacity: .9;
+    position: relative;
+  }
+
+  /* ── ارزش‌ها ── */
+  :where(body.page-about) .values {
+    position: relative;
+    padding: 72px 0;
+    background: linear-gradient(180deg, var(--rm-home-canvas) 0%, var(--rm-white) 100%);
+  }
+  :where(body.page-about) .values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  :where(body.page-about) .value {position: relative;
+    padding: 28px 22px}
+  :where(body.page-about) .value::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0; left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--rm-palette-ffb380));
+    border-radius: 0 0 16px 16px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .35s;
+  }
+  :where(body.page-about) .value:hover {transform: translateY(-6px)}
+  :where(body.page-about) .value:hover::after { transform: scaleX(1); }
+  :where(body.page-about) .value__icon {
+    display: grid;
+    place-items: center;
+    width: 48px; height: 48px;
+    margin-bottom: 14px;
+    font-size: 22px;
+    background: linear-gradient(145deg, var(--blue), var(--rm-palette-1a5fad));
+    color: var(--rm-white);
+    border-radius: 14px;
+    box-shadow: 0 6px 14px var(--rm-overlay-blue-2);
+    transition: transform .3s, background .3s;
+  }
+  :where(body.page-about) .value:hover .value__icon {
+    background: linear-gradient(145deg, var(--orange), var(--rm-palette-ff9a5a));
+    transform: scale(1.08) rotate(-6deg);
+  }
+  :where(body.page-about) .value h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  :where(body.page-about) .value p { font-size: 13px; color: var(--gray); line-height: 1.75; }
+
+  /* ── تیم ── */
+  :where(body.page-about) .team { padding: 72px 0; background: var(--rm-white); }
+  :where(body.page-about) .team__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  :where(body.page-about) .member {text-align: center;
+    padding: 28px 16px 24px}
+  :where(body.page-about) .member:hover {transform: translateY(-6px)}
+  :where(body.page-about) .member__avatar {
+    display: grid;
+    place-items: center;
+    width: 80px; height: 80px;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--rm-white);
+    background: linear-gradient(145deg, var(--blue), var(--rm-palette-0a3a6e));
+    border-radius: 50%;
+    box-shadow: 0 8px 20px var(--rm-overlay-blue-25);
+    border: 3px solid var(--rm-white);
+  }
+  :where(body.page-about) .member h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  :where(body.page-about) .member p { font-size: 12.5px; color: var(--gray); }
+
+  /* ── CTA ── */
+  :where(body.page-about) .cta {
+    position: relative;
+    padding: 72px 0;
+    text-align: center;
+    color: var(--rm-white);
+    background: linear-gradient(135deg, var(--rm-palette-1a5fad) 0%, var(--blue) 50%, var(--rm-palette-0a3a6e) 100%);
+    overflow: hidden;
+  }
+  :where(body.page-about) .cta::before {
+    content: "";
+    position: absolute;
+    width: 260px; height: 260px;
+    top: -100px; right: -60px;
+    background: var(--rm-overlay-orange-15);
+    border-radius: 50%;
+  }
+  :where(body.page-about) .cta::after {
+    content: "";
+    position: absolute;
+    width: 180px; height: 180px;
+    bottom: -70px; left: -40px;
+    /* border: 24px solid var(--rm-overlay-white-8); */
+    border-radius: 50%;
+  }
+  :where(body.page-about) .cta .container { position: relative; z-index: 1; }
+  :where(body.page-about) .cta h2 {
+    font-size: clamp(22px, 3.2vw, 30px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  :where(body.page-about) .cta p {
+    font-size: 14.5px;
+    opacity: .9;
+    margin-bottom: 28px;
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  /* ── فوتر ── */
+  :where(body.page-about) .footer {
+    padding-top: 52px;
+    color: var(--rm-white);
+    background: var(--rm-palette-0a2d5c);
+    border-top: 4px solid var(--orange);
+  }
+  :where(body.page-about) .footer__inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+  :where(body.page-about) .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  :where(body.page-about) .footer__logo span {
+    display: grid;
+    place-items: center;
+    width: 44px; height: 44px;
+    font-size: 20px;
+    font-weight: 800;
+    background: var(--orange);
+    border-radius: 12px;
+  }
+  :where(body.page-about) .footer__logo strong { display: block; font-size: 15px; }
+  :where(body.page-about) .footer__logo small { font-size: 11px; opacity: .7; }
+  :where(body.page-about) .footer__brand p {
+    font-size: 13px;
+    opacity: .78;
+    line-height: 1.9;
+  }
+  :where(body.page-about) .footer__col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  :where(body.page-about) .footer__col h4::after {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 3px;
+    margin-top: 5px;
+    background: var(--orange);
+    border-radius: 2px;
+  }
+  :where(body.page-about) .footer__col a,
+  :where(body.page-about) .footer__col span {
+    display: block;
+    font-size: 13px;
+    opacity: .78;
+    margin-bottom: 8px;
+    transition: opacity .2s, color .2s;
+  }
+  :where(body.page-about) .footer__col a:hover { opacity: 1; color: var(--orange); }
+  :where(body.page-about) .social {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  :where(body.page-about) .social a {
+    display: grid;
+    place-items: center;
+    width: 38px; height: 38px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--rm-overlay-white-1);
+    border-radius: 50%;
+    transition: background .25s, transform .25s;
+  }
+  :where(body.page-about) .social a:hover {
+    background: var(--orange);
+    transform: translateY(-3px);
+  }
+  :where(body.page-about) .footer__bottom {
+    border-top: 1px solid var(--rm-overlay-white-1);
+    padding: 18px 0;
+    text-align: center;
+  }
+  :where(body.page-about) .footer__bottom small {
+    font-size: 12px;
+    opacity: .6;
+  }
+
+  /* ══════════ ریسپانسیو ══════════ */
+
+  /* تبلت بزرگ */
+  @media (max-width: 1024px) {
+    :where(body.page-about) .values__grid { grid-template-columns: repeat(2, 1fr); }
+    :where(body.page-about) .team__grid { grid-template-columns: repeat(2, 1fr); }
+    :where(body.page-about) .footer__inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+  }
+
+  /* تبلت / موبایل بزرگ */
+  @media (max-width: 860px) {
+    :where(body.page-about) .container { padding: 0 20px; }
+    :where(body.page-about) .hero { padding: 48px 0 64px; }
+    :where(body.page-about) .hero__inner,
+    :where(body.page-about) .story__inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    :where(body.page-about) .hero__media {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    :where(body.page-about) .hero__media::before {
+      inset: -10px 12px 12px -10px;
+    }
+    :where(body.page-about) .story__media {
+      max-width: none;
+      aspect-ratio: 16 / 10;
+      order: -1;
+    }
+    :where(body.page-about) .hero::before {
+      width: 160px; height: 160px;
+      border-width: 20px;
+      bottom: -50px; left: -40px;
+    }
+    :where(body.page-about) .hero::after {
+      width: 80px; height: 60px;
+      opacity: .25;
+    }
+    :where(body.page-about) .story,
+    :where(body.page-about) .values,
+    :where(body.page-about) .team { padding: 56px 0; }
+    :where(body.page-about) .cta { padding: 56px 0; }
+  }
+
+  /* موبایل */
+  @media (max-width: 600px) {
+    :where(body.page-about) .container { padding: 0 16px; }
+    :where(body.page-about) .hero { padding: 36px 0 48px; }
+    :where(body.page-about) .hero h1 { font-size: 24px; }
+    :where(body.page-about) .hero__text p { font-size: 13.5px; }
+    :where(body.page-about) .head { margin-bottom: 28px; }
+    :where(body.page-about) .head h2 { font-size: 20px; }
+    :where(body.page-about) .story,
+    :where(body.page-about) .values,
+    :where(body.page-about) .team { padding: 44px 0; }
+    :where(body.page-about) .cta { padding: 48px 0; }
+    :where(body.page-about) .values__grid,
+    :where(body.page-about) .team__grid,
+    :where(body.page-about) .footer__inner {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    :where(body.page-about) .stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    :where(body.page-about) .stats li { padding: 14px 14px; }
+    :where(body.page-about) .stats strong { font-size: 22px; }
+    :where(body.page-about) .value {padding: 22px 18px}
+    :where(body.page-about) .member {padding: 22px 14px}
+    :where(body.page-about) .member__avatar {
+      width: 68px; height: 68px; font-size: 20px;
+    }
+
+    :where(body.page-about) .footer__inner { gap: 24px; }
+  }
+
+  /* موبایل خیلی کوچک */
+  @media (max-width: 380px) {
+    :where(body.page-about) .stats { grid-template-columns: 1fr; }
+    :where(body.page-about) .hero h1 { font-size: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(body.page-about),
+    :where(body.page-about) *,
+    :where(body.page-about) *::before,
+    :where(body.page-about) *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+   /* ───────────────────────── ۲) تماس با ما (page-contact) ───────────────────────── */
+   /* ===== Base (variables, reset, layout) ===== */
+   :where(body.page-contact), :where(body.page-contact) *{box-sizing:border-box}
+   :where(body.page-contact){margin:0;background:var(--bg);color:var(--ink);font-family: var(--rm-font);line-height:1.8}
+   :where(body.page-contact) .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+   
+   /* Footer */
+   :where(body.page-contact) .footer{--f-bg:var(--rm-palette-12308a);--f-ink:var(--rm-white);--f-mut:var(--rm-palette-b8c6f5);--f-line:var(--rm-overlay-white-18);background:var(--f-bg);color:var(--f-ink);padding:56px 0 24px}
+   :where(body.page-contact) .f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--f-line)}
+   :where(body.page-contact) .logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+   :where(body.page-contact) .mark{width:52px;height:52px;border-radius:12px;background:var(--accent);display:grid;place-items:center;font:800 28px var(--rm-font);color:var(--rm-white)}
+   :where(body.page-contact) .logo strong{display:block;font-size:24px;line-height:1.2}
+   :where(body.page-contact) .logo small{color:var(--f-mut);font-size:12px}
+   :where(body.page-contact) .f-brand p{margin:0;color:var(--f-mut);font-size:13px;max-width:44ch}
+   :where(body.page-contact) .f-col{display:flex;flex-direction:column;gap:12px}
+   :where(body.page-contact) .f-col h4{margin:0 0 6px;font-size:15px}
+   :where(body.page-contact) .f-col a,:where(body.page-contact) .f-line{color:var(--f-mut);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:8px}
+   :where(body.page-contact) .f-col a:hover{color:var(--f-ink)}
+   :where(body.page-contact) .f-col a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+   :where(body.page-contact) .f-line svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-contact) .social{display:flex;gap:10px;margin-top:6px}
+   :where(body.page-contact) .social a{width:38px;height:38px;border-radius:50%;background:var(--rm-overlay-white-12);justify-content:center;color:var(--f-ink)}
+   :where(body.page-contact) .social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-contact) .f-bottom{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:20px;color:var(--f-mut);font-size:12px}
+   @media (max-width:960px){:where(body.page-contact) .f-grid{grid-template-columns:1fr 1fr}}
+   @media (max-width:520px){:where(body.page-contact) .f-grid{grid-template-columns:1fr}}
+   
+   /* Contact page */
+   :where(body.page-contact) .contact-hero{--ch-bg:var(--rm-palette-eaf3ff);background:var(--ch-bg);padding:64px 0 120px}
+   :where(body.page-contact) .contact-hero h1{margin:0 0 14px;font-size:clamp(28px,4vw,44px);line-height:1.4}
+   :where(body.page-contact) .contact-hero p{margin:0;max-width:62ch;color:var(--muted);font-size:15px}
+   :where(body.page-contact) .contact-body{padding:0 0 88px}
+   :where(body.page-contact) .contact-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;margin-top:-72px;align-items:start}
+   :where(body.page-contact) .form-card,:where(body.page-contact) .info-card,:where(body.page-contact) .map{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+   :where(body.page-contact) .form-card{padding:32px}
+   :where(body.page-contact) .form-card h2{margin:0 0 4px;font-size:22px}
+   :where(body.page-contact) .hint{margin:0 0 28px;color:var(--muted);font-size:13px}
+   :where(body.page-contact) .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+   :where(body.page-contact) .field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+   :where(body.page-contact) .field label{font-size:13px;font-weight:700}
+   :where(body.page-contact) .field input,:where(body.page-contact) .field select,:where(body.page-contact) .field textarea{width:100%;font: 400 14px var(--rm-font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+   :where(body.page-contact) .field textarea{resize:vertical;min-height:130px}
+   :where(body.page-contact) .field ::placeholder{color:var(--muted);opacity:.8}
+   :where(body.page-contact) .field input:focus-visible,:where(body.page-contact) .field select:focus-visible,:where(body.page-contact) .field textarea:focus-visible{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+   :where(body.page-contact) .submit{width:100%;justify-content:center}
+   :where(body.page-contact) .status{margin:14px 0 0;font-size:13px;min-height:1.4em}
+   :where(body.page-contact) .status.ok{color:var(--rm-palette-1b8a4b)}:where(body.page-contact) .status.err{color:var(--rm-palette-d23b3b)}
+   :where(body.page-contact) .info{display:flex;flex-direction:column;gap:18px}
+   :where(body.page-contact) .info-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px}
+   :where(body.page-contact) .ib{flex:none;width:48px;height:48px;border-radius:14px;background:var(--blue);color:var(--rm-white);display:grid;place-items:center}
+   :where(body.page-contact) .ib svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-contact) .info-card h3{margin:0 0 6px;font-size:16px}
+   :where(body.page-contact) .info-card p{margin:0;color:var(--muted);font-size:13px}
+   :where(body.page-contact) .info-card a{display:block;color:var(--blue);font-size:14px;font-weight:700;text-decoration:none;text-align:right;line-height:2}
+   :where(body.page-contact) .info-card a:hover{text-decoration:underline}
+   :where(body.page-contact) .info-card a:focus-visible,:where(body.page-contact) .soc a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+   :where(body.page-contact) .soc{display:flex;gap:10px;margin-top:6px}
+   :where(body.page-contact) .info-card .soc a{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;line-height:0}
+   :where(body.page-contact) .soc svg{width:20px;height:20px;fill:none;stroke:var(--blue);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+   :where(body.page-contact) .map{height:180px;position:relative;overflow:hidden;background:
+     repeating-linear-gradient(0deg,transparent 0 29px,var(--line) 29px 30px),
+     repeating-linear-gradient(90deg,transparent 0 29px,var(--line) 29px 30px),var(--soft)}
+   :where(body.page-contact) .map-pin{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-90%);color:var(--accent)}
+   :where(body.page-contact) .map-pin svg{width:44px;height:44px;fill:currentColor;stroke:var(--rm-white);stroke-width:1.2}
+   @media (max-width:960px){:where(body.page-contact) .contact-grid{grid-template-columns:1fr}}
+   @media (max-width:520px){:where(body.page-contact) .f-row{grid-template-columns:1fr}:where(body.page-contact) .form-card{padding:24px 18px}:where(body.page-contact) .contact-hero{padding-top:44px}}
+   
+   /* ───────────────────────── ۳) فایل پدر: رنگ‌ها و قوانین سراسری ───────────────────────── */
+   /* =====================================================================
+      راد مدرن — فایل «پدر» (theme.css)
+      همهٔ صفحات این فایل را «آخر از همه» لود می‌کنند:
+        index / nemonekar / maghalat / article / about / contact
+   
+      اگر خواستی رنگ سایت را عوض کنی، فقط ۵ رنگ اصلی همین بخش اول را عوض کن.
+      ===================================================================== */
+   
+   /* Design tokens and legacy aliases live in design-system.css. */
+
+/* ───────────── ۳) پایهٔ صفحه ───────────── */
+   html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+   html, body { background: var(--rm-white); }
+   html, body { overflow-x: clip; }   /* جلوگیری از اسکرول افقی (نوار نارنجی متحرک و دایره‌های تزئینی) */
+   body {
+     font-family: var(--rm-font);
+     color: var(--rm-gray);              /* متن عادی و توضیحات = خاکستری */
+   }
+   
+   /* تیترها = آبی اصلی */
+   h1, h2, h3, h4, h5, h6 { color: var(--rm-blue); }
+   
+   /* متن توضیحات زیر تیترها = خاکستری */
+   p,
+   .lead, .sec-sub, .section-sub, .hint, .meta,
+   .head p, .card p, .feat p, .value p, .info-card p {
+     color: var(--rm-gray);
+   }
+   
+   /* نام شرکت در تیتر = آبی (با خط نارنجی زیرش در صفحه اصلی) */
+   h1 .brand, h1 .accent, .accent { color: var(--rm-blue); }
+   /* تأکید نارنجی فقط در تیتر صفحه نمونه‌کارها */
+   .page-nemonekar h1 .accent { color: var(--rm-orange); }
+   
+   a { color: inherit; }
+   :focus-visible { outline: 3px solid var(--rm-orange); outline-offset: 3px; }
+   
+    /* ───── فیلترها (صفحات نمونه‌کار و مقالات) ───── */
+   .filter { color: var(--rm-blue); background: var(--rm-white); border-color: var(--rm-line); }
+   .filter:hover { border-color: var(--rm-orange); color: var(--rm-orange); }
+   .filter.is-active,
+   .categories button.active,
+   .categories button:hover {
+     background: var(--rm-orange); border-color: var(--rm-orange); color: var(--rm-white);
+   }
+   .categories button { color: var(--rm-gray); border-color: var(--rm-line); }
+   
+   /* ───────────── ۵) بخش‌ها: آبی روشن فقط برای نمونه‌کار، مقالات، چرا راد مدرن؛ بقیه سفید ───────────── */
+   section, main, .hero, .services, .techs, .story, .contact-hero, .contact-body, .articles-section, .intro, .featured { background-color: transparent; }
+   
+   .hero, .services, .techs, .story, .contact-hero, .contact-body {
+     background: var(--rm-white);
+   }
+   
+   /* بخش‌های آبی روشن */
+   .portfolio, .blog, .projects, .values, .bottom {
+     background: var(--rm-blue-light);
+   }
+   /* «چرا راد مدرن» — پس‌زمینه شفاف؛ تصویر از home.css */
+   .why::before, .why::after { display: none; }
+   .why, :root:not([data-theme="light"]) .why, :root[data-theme="dark"] .why { --why-bg: transparent; background: transparent !important; }
+   .blog { background-image: none; }
+   
+   
+   /* صفحهٔ مقالات: لیست مقالات روی پنل آبی روشن */
+   .articles-section {
+     background: var(--rm-blue-light);
+     border-radius: 24px;
+     padding: 28px 28px 40px;
+     margin-bottom: 40px;
+   }
+   @media (max-width: 600px) { .articles-section { padding: 18px 14px 28px; border-radius: 18px; } }
+   
+   /* هیرو سفید می‌شود (قبلاً گرادیان/آبی تیره بود) */
+   .hero {
+     background: var(--rm-white);
+     color: var(--rm-gray);
+   }
+   .hero__text p { color: var(--rm-gray); }
+   .hero__card { background: var(--rm-blue-light); }
+   .contact-hero { --ch-bg: var(--rm-white); background: var(--rm-white); }
+   :root:not([data-theme="light"]) .contact-hero,
+   :root[data-theme="dark"] .contact-hero { --ch-bg: var(--rm-white); }
+   
+   
+   /* ───────────── ۶) دکمه‌های «مشاهده پروژه» و «مطالعه مقاله» (نمونه‌کار و مقالات صفحهٔ اصلی) = نارنجی ───────────── */
+   .more {
+     justify-content: center;
+     gap: 10px;
+     margin: 12px 18px 18px;
+     padding: 10px 18px;
+     border: 0;
+     border-radius: 999px;
+     background: var(--rm-orange);
+     color: var(--rm-white);
+     box-shadow: 0 8px 18px var(--rm-overlay-orange-28);
+   }
+   .more svg { stroke: var(--rm-white); }
+   .more:hover { background: var(--rm-orange-dark); color: var(--rm-white); }
+   
+   /* فلش‌های اسلایدر */
+   .arrow { background: var(--rm-orange); border-color: var(--rm-orange); color: var(--rm-white); }
+   .arrow:hover { background: var(--rm-orange-dark); border-color: var(--rm-orange-dark); }
+   
+   /* لینک کارت‌ها در صفحه نمونه‌کار و مقالات */
+   .card__link, .card-footer a { color: var(--rm-orange-dark); }
+   .card__link:hover, .card-footer a:hover { color: var(--rm-orange) !important; }
+   
+   /* برچسب‌ها */
+   .tags span, .tag, .tags li { background: var(--rm-blue-light); color: var(--rm-blue); }
+   .work:hover .tags span { background: var(--rm-overlay-orange-14); color: var(--rm-orange-dark); }
+   
+   /* ───────────── ۷) متن‌های خاکستری که رنگ ثابت (hex) داشتند ───────────── */
+   .content p, .content li, .r-card small, .card-footer, .card__meta,
+   .intro p, .featured p, .story__text > p, .section-sub, .filters__count {
+     color: var(--rm-gray);
+   }
+   .content .lead { color: var(--rm-gray); }
+   .callout p { color: var(--rm-blue); }
+   .callout { background: var(--rm-blue-light); }
+   .header nav a { color: var(--rm-gray); }
+   
+   /* ───────────── ۸) بلوک‌های آبی (دعوت به اقدام و فوتر) ───────────── */
+   .cta, .footer { --f-bg: var(--rm-blue); }
+   .cta {
+     background: var(--rm-blue);
+     color: var(--rm-white);
+   }
+   :root:not([data-theme="light"]) .cta,
+   :root[data-theme="dark"] .cta { --cta-bg: var(--rm-blue); background: var(--rm-blue); }
+   .cta h2, .cta h3 { color: var(--rm-white); }
+   .cta p { color: var(--rm-overlay-white-88); }
+   
+   .footer {
+     --f-ink: var(--rm-white);
+     --f-mut: var(--rm-overlay-white-78);
+     background: var(--rm-blue);
+     color: var(--rm-white);
+     border-top: 5px solid var(--rm-orange);
+   }
+   :root:not([data-theme="light"]) .footer,
+   :root[data-theme="dark"] .footer { --f-bg: var(--rm-blue); background: var(--rm-blue); }
+   .footer h1, .footer h2, .footer h3, .footer h4, .footer strong { color: var(--rm-white); }
+   .footer p, .footer small, .footer span, .footer a { color: var(--rm-overlay-white-82); }
+   .footer a:hover { color: var(--rm-orange); }
+   .footer .mark, .footer__logo span { background: var(--rm-orange); color: var(--rm-white); }
+   .footer .social a:hover, .footer__col .social a:hover { background: var(--rm-orange); color: var(--rm-white); }
+   /* فوتر ساده مقالات / مقاله */
+   body > .footer:only-of-type { text-align: center; }
+   
+   /* کادرهای آبی کوچک (آمار، ...) */
+   .stats li { background: var(--rm-blue); color: var(--rm-white); }
+   .stats li:hover { background: var(--rm-blue-dark); }
+   .stats strong { color: var(--rm-orange); }
+   .stats span { color: var(--rm-overlay-white-85); }
+   
+   /* ───────────── ۹) هدر مشترک — استایل پایه در بخش اول قرار دارد ───────────── */
+   
+   /* ───────────── ۱۰) فرم‌ها ───────────── */
+   .field input, .field select, .field textarea {
+     background: var(--rm-white);
+     color: var(--rm-blue);
+     border-color: var(--rm-line);
+   }
+   .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+     outline-color: var(--rm-orange); border-color: var(--rm-orange);
+   }
+   .field label { color: var(--rm-blue); }
+   .map-pin { color: var(--rm-orange); }
+   .info-card a { color: var(--rm-blue); }
+   
+   /* نوار پیشرفت مطالعه مقاله */
+   .progress, .views { background: var(--rm-orange); }
+   
+   
+   /* ───────────────────────── ۴) بازطراحی صفحه اصلی بر اساس فیگما (فقط page-home) ───────────────────────── *//* فوتر همهٔ صفحات یک رنگ */
+   .footer,
+   :root:not([data-theme="light"]) .footer,
+   :root[data-theme="dark"] .footer { --f-bg: var(--rm-footer); background: var(--rm-footer); }
+   
+   html:has(body.page-home) { background: var(--hm-bg); }
+   body.page-home { background: var(--hm-bg); color: var(--rm-gray); }
+   
+   /* ── هدر ── */
+@media (max-width: 900px) {
+}
+   
+   /* ── هیرو ── */
+   body.page-home .hero { background: transparent; clip-path: none; overflow: visible; padding: 32px 0 64px; }
+   body.page-home .hero::before,
+   body.page-home .hero::after { display: none; }
+   body.page-home .hero h1 { color: var(--rm-blue); font-size: clamp(32px, 4.4vw, 54px); line-height: 1.6; }
+   body.page-home .hero h1 .brand { color: var(--rm-orange); background: none; }
+   body.page-home .hero .lead { color: var(--rm-gray); font-size: 15px; line-height: 2; }
+
+   /* ── عنوان بخش‌ها ── */
+   body.page-home .sec-title { color: var(--rm-blue); font-size: 20px; font-weight: 800; }
+   body.page-home .sec-title::before { width: 30px; height: 4px; background: var(--rm-orange); }
+   body.page-home .sec-sub { color: var(--rm-gray); font-size: 13px; }
+   
+   /* ── خدمات ── */
+   body.page-home .services { background: transparent; padding: 0 0 64px; }
+   body.page-home .card {padding: 30px 18px}
+   body.page-home .card::after,
+   body.page-home .work::after { display: none; }
+   body.page-home .card:hover {transform: translateY(-5px)}
+   body.page-home .card h3 { color: var(--rm-blue); font-size: 15px; }
+   body.page-home .card p { color: var(--rm-gray); font-size: 12.5px; }
+   body.page-home .ico { width: 62px; height: 62px; border-radius: 50%; background: var(--rm-palette-e6f0fc); color: var(--rm-blue); }
+   body.page-home .card:hover .ico,
+   body.page-home .feat:hover .ico { background: var(--rm-orange); color: var(--rm-white); }
+   
+   /* ── نمونه‌کارها و مقالات ── */
+   body.page-home .portfolio,
+   body.page-home .blog { background: transparent; background-image: none; padding: 0 0 60px; border: 0; }
+   body.page-home .sec-head { margin-bottom: 22px; }
+   body.page-home .arrow {
+     width: 32px; height: 32px; background: var(--rm-white); color: var(--rm-blue);
+     border: 1px solid var(--rm-palette-e3eaf5); box-shadow: none;
+   }
+   body.page-home .arrow:hover { background: var(--rm-orange); border-color: var(--rm-orange); color: var(--rm-white); }
+   body.page-home .work:hover {transform: translateY(-5px)}
+   body.page-home .shot { height: 158px; border-radius: 16px 16px 0 0; }
+   body.page-home .work .body { padding: 14px 16px 6px; }
+   body.page-home .work .body small { color: var(--rm-gray); font-size: 11.5px; }
+   body.page-home .work .body h3 { color: var(--rm-blue); font-size: 15px; margin: 2px 0 12px; }
+   body.page-home .tags span { background: var(--rm-palette-f1f5f9); color: var(--rm-gray); border-radius: 8px; font-size: 11px; padding: 2px 12px; }
+   body.page-home .work:hover .tags span { background: var(--rm-palette-f1f5f9); color: var(--rm-gray); }
+   body.page-home .more {
+     justify-content: space-between; margin: 10px 16px 0; padding: 12px 0 14px; border-radius: 0;
+     background: none; box-shadow: none; border-top: 1px solid var(--rm-palette-eef2f7);
+     color: var(--rm-blue); font-size: 13px; font-weight: 700;
+   }
+   body.page-home .more svg { stroke: var(--rm-orange); }
+   body.page-home .more:hover { background: none; color: var(--rm-orange); }
+   
+   /* ── چرا راد مدرن: پس‌زمینه تصویر (استایل اصلی در home.css) ── */
+   body.page-home .why,
+   :root:not([data-theme="light"]) body.page-home .why,
+   :root[data-theme="dark"] body.page-home .why {
+     --why-bg: transparent;
+     background: transparent !important;
+     padding: 0;
+     margin-bottom: 60px;
+   }
+   
+   /* ── تکنولوژی‌ها ── */
+   body.page-home .techs { background: transparent; padding: 0 0 72px; }
+   body.page-home .tech b { color: var(--rm-blue); }
+   
+   /* ── فوتر ── */
+   body.page-home .footer { border-top: 0; }
+   @media (max-width: 520px) {
+}
+/* ── بهینه‌سازی سرعت: رندر تنبل بخش‌های پایین صفحه ── */
+.services, .portfolio, .blog, .why, .techs, .values, .team, .cta, .story, .footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
+
+/* ───────────────────────── سیستم توکن و دسترس‌پذیری مشترک ───────────────────────── */html { scroll-behavior: smooth; }
+img { max-width: 100%; }
+
+.skip-link {
+  position: absolute;
+  z-index: 9999;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  transform: translateY(-160%);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--rm-white) !important;
+  background: var(--rm-color-brand-strong);
+  font:700 1rem/1.5 var(--rm-font);
+  text-decoration: none;
+}
+.skip-link:focus { transform: translateY(0); }
+
+:where(body) :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--rm-color-accent);
+  outline-offset: 3px;
+}
+
+:where(body.page-maghalat) #search:focus-visible {
+  outline: 3px solid var(--rm-color-accent);
+  outline-offset: 2px;
+  border-color: var(--rm-color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* فرم تماس و اجزای صفحه نمونه‌کار */
+:where(body.page-contact) .form-note {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-inline-start: 3px solid var(--rm-orange);
+  border-radius: 8px;
+  background: var(--rm-blue-light);
+  color: var(--rm-blue-dark);
+  font-size: 12px;
+  line-height: 1.9;
+}
+:where(body.page-contact) .direct-contact {
+  margin: 16px 0 0;
+  color: var(--rm-gray);
+  font-size: 13px;
+  line-height: 2;
+}
+:where(body.page-contact) .direct-contact a {
+  color: var(--rm-blue);
+  font-weight: 700;
+}
+:where(body.page-nemonekar) .cta {
+  padding: 56px 0;
+  text-align: center;
+}
+:where(body.page-nemonekar) .cta h2 {
+  margin: 0 0 10px;
+  font-size: clamp(22px, 3vw, 30px);
+}
+:where(body.page-nemonekar) .cta p {
+  margin: 0 auto 22px;
+  max-width: 58ch;
+  color: var(--rm-overlay-white-86);
+}
+@media (max-width: 520px) {
+  :where(body.page-contact) .field input,
+  :where(body.page-contact) .field select,
+  :where(body.page-contact) .field textarea {
+    font-size: 16px;
+  }
+  :where(body.page-nemonekar) .cta { padding: 42px 0; }
+}
+
+
+/* =====================================================================
+   افزوده‌ها: هدر روشن صفحات داخلی، آیکون‌های ارتباط، فوتر جدید،
+   هیروی نمونه‌کار و درباره ما، اصلاح هیروی مقالات، فرم تماس
+   ===================================================================== */
+
+/* ───────────── ۱) هدر صفحات داخلی: پس‌زمینه سفید و متن تیره ───────────── */
+/* هدر شفاف فقط روی هیروی ویدیویی صفحه اصلی معنی دارد؛ بقیه صفحات پس‌زمینه روشن دارند */
+body:not(.page-home) .site-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(220, 230, 243, 0.9);
+  box-shadow: 0 4px 24px rgba(13, 75, 141, 0.09);
+}
+body:not(.page-home) .site-header:not(.is-scrolled) .nav-link { color: var(--rm-text-strong); font-weight: 600; }
+body:not(.page-home) .site-header:not(.is-scrolled) .nav-link:hover { color: var(--rm-orange); }
+body:not(.page-home) .site-header:not(.is-scrolled) .nav-link.is-active { color: var(--rm-blue); font-weight: 700; }
+body:not(.page-home) .site-header:not(.is-scrolled) .nav-link::after { background: var(--rm-orange); }
+body:not(.page-home) .site-header:not(.is-scrolled) .brand-name { color: var(--rm-blue); }
+body:not(.page-home) .site-header:not(.is-scrolled) .brand-tag { color: var(--rm-gray); }
+body:not(.page-home) .site-header:not(.is-scrolled) .brand-logo { box-shadow: 0 8px 18px rgba(13, 75, 141, 0.22); }
+body:not(.page-home) .site-header:not(.is-scrolled) .mobile-toggle .hamburger-bar { background: var(--rm-blue); }
+body:not(.page-home) .site-header:not(.is-scrolled) .hc {
+  --hc-fg: var(--rm-blue); --hc-bd: var(--rm-line); --hc-bg: transparent;
+}
+
+/* ───────────── ۲) آیکون‌های تماس / تلگرام / واتساپ ───────────── */
+.hc {
+  --hc: var(--rm-orange);
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--hc-bd, var(--rm-line));
+  background: var(--hc-bg, transparent);
+  color: var(--hc-fg, var(--rm-blue));
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.hc svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hc--call { --hc: var(--rm-orange); }
+.hc--tg   { --hc: #229ED9; }
+.hc--wa   { --hc: #25D366; }
+.hc:hover, .hc:focus-visible {
+  background: var(--hc);
+  border-color: var(--hc);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--hc) 40%, transparent);
+}
+.header-contact { display: flex; align-items: center; gap: 10px; }
+.drawer-social { display: flex; justify-content: center; gap: 12px; }
+.drawer-social .hc { width: 44px; height: 44px; }
+/* روی هیروی ویدیویی صفحه اصلی (قبل از اسکرول) آیکون‌ها سفیدند */
+.site-header:not(.is-scrolled) .hc { --hc-fg: #fff; --hc-bd: rgba(255,255,255,.38); --hc-bg: rgba(255,255,255,.1); }
+@media (max-width: 520px) { .header-actions .header-contact { display: none; } }
+
+/* ───────────── ۳) فوتر جدید و مشترک همه صفحات ───────────── */
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background: var(--rm-footer);
+  color: rgba(255,255,255,.82);
+  border-top: 5px solid var(--rm-orange);
+  padding: 80px 0 0;
+  content-visibility: visible;
+}
+.site-footer::before {
+  content: "R";
+  position: absolute;
+  inset-inline-end: -30px;
+  bottom: -150px;
+  font: 800 460px/1 var(--rm-font-display);
+  color: rgba(255,255,255,.04);
+  pointer-events: none;
+}
+.sf-wrap { position: relative; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.sf-top {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr 1fr 1.1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+}
+.sf-logo { display: inline-flex; align-items: center; gap: 14px; color: #fff; text-decoration: none; margin-bottom: 20px; }
+.sf-mark { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 16px; background: var(--rm-orange); color: #fff; font: 800 30px/1 var(--rm-font-display); }
+.sf-logo strong { display: block; font-size: 24px; line-height: 1.3; color: #fff; }
+.sf-logo small { display: block; font-size: 12.5px; color: rgba(255,255,255,.7); }
+.sf-brand p { margin: 0 0 26px; max-width: 44ch; font-size: 14.5px; line-height: 2; color: rgba(255,255,255,.78); }
+.sf-social { display: flex; gap: 12px; }
+.sf-social .hc { --hc-fg: #fff; --hc-bd: rgba(255,255,255,.28); --hc-bg: rgba(255,255,255,.06); width: 46px; height: 46px; }
+.site-footer .sf-col h3 { margin: 0 0 22px; font-size: 16px; font-weight: 800; color: #fff; }
+.sf-col h3::after { content: ""; display: block; width: 28px; height: 3px; margin-top: 8px; border-radius: 3px; background: var(--rm-orange); }
+.sf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.sf-col a {
+  display: inline-block;
+  padding: 5px 0;
+  font-size: 14.5px;
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  transition: color .2s ease, transform .25s var(--rm-ease);
+}
+.sf-col a:hover, .sf-col a:focus-visible { color: var(--rm-orange); transform: translateX(-6px); }
+.sf-bottom {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 24px 0 28px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+}
+@media (max-width: 1100px) { .sf-top { grid-template-columns: 1fr 1fr 1fr; } .sf-brand { grid-column: 1 / -1; } }
+@media (max-width: 640px) {
+  .site-footer { padding-top: 56px; }
+  .sf-top { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .sf-col:last-child { grid-column: 1 / -1; }
+  .sf-bottom { justify-content: center; text-align: center; }
+}
+
+/* ───────────── ۴) هیروی نمونه‌کارها ───────────── */
+body.page-nemonekar .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 80px 0 96px;
+  color: #fff;
+  background:
+    radial-gradient(60% 90% at 88% 0%, rgba(255,118,41,.30), transparent 62%),
+    linear-gradient(150deg, var(--rm-blue-dark) 0%, var(--rm-blue) 62%, #1A5FAD 100%);
+}
+body.page-nemonekar .hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(75% 95% at 30% 45%, #000, transparent 78%);
+          mask-image: radial-gradient(75% 95% at 30% 45%, #000, transparent 78%);
+}
+body.page-nemonekar .hero .eyebrow { color: rgba(255,255,255,.85); }
+body.page-nemonekar .hero .eyebrow::before { background: var(--rm-orange); }
+body.page-nemonekar .hero h1 { color: #fff; font-size: clamp(28px, 4.2vw, 46px); line-height: 1.55; }
+body.page-nemonekar .hero h1 .accent { color: #FF9A5A; }
+body.page-nemonekar .hero__text p { color: rgba(255,255,255,.86); font-size: 15.5px; line-height: 2.1; }
+body.page-nemonekar .hero__card {
+  width: 370px;
+  padding: 28px 26px;
+  text-align: right;
+  color: #fff;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.24);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  border-radius: 22px;
+  box-shadow: 0 28px 60px rgba(0,10,40,.35);
+}
+body.page-nemonekar .hero__card h2 { margin: 0 0 6px; color: #fff; font-size: 18px; }
+body.page-nemonekar .hero__card p { margin: 0 0 24px; color: rgba(255,255,255,.8); font-size: 13px; }
+.steps { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.steps::before, .steps::after {
+  content: ""; position: absolute; inset-block: 18px; inset-inline-start: 17px; width: 2px; border-radius: 2px;
+}
+.steps::before { background: rgba(255,255,255,.22); }
+.steps::after { background: var(--rm-orange); transform: scaleY(0); transform-origin: top; animation: stepsLine 2.2s linear .5s forwards; }
+.steps li { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 14px; }
+.steps__n {
+  flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--rm-blue-dark); border: 2px solid rgba(255,255,255,.32);
+  font-weight: 800; font-size: 15px; color: #fff;
+  animation: stepOn .45s ease forwards; animation-delay: calc(.5s + var(--i, 0) * 1.1s);
+}
+.steps b { display: block; font-size: 15px; line-height: 1.7; color: #fff; }
+.steps small { display: block; font-size: 12.5px; line-height: 1.8; color: rgba(255,255,255,.78); }
+@keyframes stepsLine { to { transform: scaleY(1); } }
+@keyframes stepOn { to { background: var(--rm-orange); border-color: var(--rm-orange); box-shadow: 0 0 0 6px rgba(255,118,41,.28); } }
+@media (max-width: 860px) {
+  body.page-nemonekar .hero { padding: 48px 0 56px; }
+  body.page-nemonekar .hero__card { width: 100%; }
+}
+
+/* ───────────── ۵) هیروی درباره ما ───────────── */
+body.page-about .hero__media {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 3;
+  margin-inline: auto;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.page-about .hero__media::before { content: none; }
+body.page-about .hero__media img {
+  position: relative; z-index: 1;
+  border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  box-shadow: 0 24px 54px var(--rm-overlay-blue-14);
+  animation: aboutBlob 14s ease-in-out infinite;
+}
+.orbit {
+  position: absolute; top: 50%; left: 50%; z-index: 2;
+  width: 112%; aspect-ratio: 1;
+  translate: -50% -50%;
+  border: 2px dashed var(--rm-overlay-orange-55);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: aboutSpin 36s linear infinite;
+}
+.orbit b { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; animation: aboutSpinRev 36s linear infinite; }
+.orbit i {
+  display: block; padding: 7px 16px; border-radius: 999px;
+  font-style: normal; font-size: 13px; font-weight: 700; white-space: nowrap;
+  color: var(--rm-blue); background: var(--rm-white);
+  border: 1px solid var(--rm-line);
+  box-shadow: 0 10px 24px var(--rm-overlay-blue-14);
+}
+.orbit b:first-child i { background: var(--rm-orange); border-color: var(--rm-orange); color: #fff; }
+@keyframes aboutSpin    { to { rotate: 360deg; } }
+@keyframes aboutSpinRev { to { rotate: -360deg; } }
+@keyframes aboutBlob {
+  50% { border-radius: 44% 56% 42% 58% / 56% 44% 58% 42%; }
+}
+@media (max-width: 860px) {
+  body.page-about .hero__media { max-width: 360px; margin-block: 24px; }
+  .orbit { width: 104%; }
+}
+
+/* ───────────── ۶) هیروی مقالات: اندازه و چیدمان درست ───────────── */
+body.page-maghalat .intro { margin: 8px 0 24px; }
+body.page-maghalat .intro h1 { font-size: clamp(24px, 2.8vw, 32px); line-height: 1.6; margin: 0 0 8px; }
+body.page-maghalat .intro p { font-size: 13.5px; line-height: 2; max-width: 62ch; }
+body.page-maghalat .featured {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  min-height: 280px;
+  margin-bottom: 36px;
+}
+body.page-maghalat .featured-image { position: relative; min-height: 0; }
+body.page-maghalat .featured-image a { position: absolute; inset: 0; display: block; }
+body.page-maghalat .featured-image img { width: 100%; height: 100%; min-height: 0; object-fit: cover; display: block; }
+body.page-maghalat .featured-content { padding: 26px 32px; min-width: 0; }
+body.page-maghalat .featured h2 { font-size: 20px; line-height: 1.8; margin: 12px 0 8px; }
+body.page-maghalat .featured p { font-size: 13px; line-height: 2; margin: 0; }
+body.page-maghalat .featured .meta { font-size: 12px; margin: 8px 0 16px; }
+@media (max-width: 760px) {
+  body.page-maghalat .featured { grid-template-columns: 1fr; min-height: 0; }
+  body.page-maghalat .featured-image { height: 210px; }
+  body.page-maghalat .featured-content { padding: 20px; }
+  body.page-maghalat .featured h2 { font-size: 18px; }
+}
+
+/* ───────────── ۷) فرم تماس: هاور نارنجی، انتخاب (فوکوس) آبی ───────────── */
+body.page-contact .field input:hover,
+body.page-contact .field select:hover,
+body.page-contact .field textarea:hover {
+  border-color: var(--rm-orange);
+  box-shadow: 0 0 0 3px var(--rm-overlay-orange-14);
+}
+body.page-contact .field input:focus,
+body.page-contact .field select:focus,
+body.page-contact .field textarea:focus,
+body.page-contact .field input:focus-visible,
+body.page-contact .field select:focus-visible,
+body.page-contact .field textarea:focus-visible {
+  border-color: var(--rm-blue);
+  outline: 2px solid var(--rm-blue);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 5px var(--rm-overlay-blue-12);
+}
+body.page-contact .info-card:hover { border-color: var(--rm-orange); }
+body.page-contact .info-card a:hover { color: var(--rm-orange); }
+
+/* ───────────── ۸) صفحه اصلی: دکمه‌های اسلایدر ───────────── */
+body.page-home .arrows { flex-direction: row; }
+
+/* آیکون‌های منوی موبایل همیشه روی زمینه سفید خوانا باشند */
+.site-header .drawer-social .hc { --hc-fg: var(--rm-blue); --hc-bd: var(--rm-line); --hc-bg: transparent; }
+
+/* تنظیمات نهایی پس از بررسی ظاهری */
+body.page-about .hero { padding: 104px 0 112px; }
+@media (max-width: 860px) { body.page-about .hero { padding: 64px 0 80px; } }
+body.page-maghalat .intro { margin: 40px 0 28px; }
+.sf-bottom { padding-left: 80px; }
+@media (max-width: 640px) { .sf-bottom { padding-left: 0; padding-bottom: 84px; } }
+
+/* ═══════════════════════════════════════════════════════════════
+   صفحه تماس با ما — گلاسمورفیسم (از contact.css منتقل شد)
+   ═══════════════════════════════════════════════════════════════ */
+/* ========== صفحه تماس — گلاسمورفیسم روی پس‌زمینه دفتر ========== */
+body.page-contact {
+  margin: 0;
+  min-height: 100vh;
+  background: #0a1628;
+  font-family: "Vazirmatn", system-ui, sans-serif;
+}
+
+body.page-contact .site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.page-contact .site-header:not(.is-scrolled) .nav-link {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+}
+body.page-contact .site-header:not(.is-scrolled) .nav-link.is-active {
+  color: #fff;
+}
+body.page-contact .site-header:not(.is-scrolled) .brand-name {
+  color: #0D4B8D;
+}
+body.page-contact .site-header:not(.is-scrolled) .brand-tag {
+  color: #6b7a90;
+}
+body.page-contact .site-header:not(.is-scrolled) .header-brand {
+  background: #ffffff;
+  padding: 8px 14px 8px 10px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(13, 75, 141, 0.14);
+  gap: 10px;
+}
+body.page-contact .site-header:not(.is-scrolled) .brand-logo {
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 36px;
+  height: 36px;
+}
+body.page-contact .site-header:not(.is-scrolled) .logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+body.page-contact .site-header:not(.is-scrolled) .mobile-toggle .hamburger-bar {
+  background: #fff;
+}
+
+/* پس‌زمینه تمام‌صفحه — عکس دقیقاً زیر هدر */
+.contact-stage {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* فاصله از بالا = ارتفاع تقریبی هدر تا محتوا و عکس از زیر هدر دیده شود */
+  padding: 72px 20px 48px;
+  overflow: hidden;
+}
+
+.contact-stage__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(6, 20, 40, 0.35) 0%, rgba(6, 20, 40, 0.15) 45%, rgba(6, 20, 40, 0.45) 100%),
+    url("image/tp.jpg") center top / cover no-repeat;
+  z-index: 0;
+}
+
+.contact-stage__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, transparent 0%, rgba(4, 12, 28, 0.25) 100%);
+  pointer-events: none;
+}
+
+/* کارت شیشه‌ای */
+.glass-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  padding: 28px 26px 30px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(1.35);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+/* لوگو بالای کارت */
+.glass-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  text-decoration: none;
+  color: inherit;
+}
+.glass-logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+.glass-logo__text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.glass-logo__text strong {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.glass-logo__text span {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.78);
+}
+
+/* سه دکمه بالا: WhatsApp / Telegram / Email */
+.glass-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.glass-ch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-ch:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.glass-ch svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+.glass-ch--wa { --ch: #25D366; }
+.glass-ch--tg { --ch: #2AABEE; }
+.glass-ch--em { --ch: #FF7629; }
+.glass-ch--wa:hover { background: color-mix(in srgb, #25D366 35%, transparent); border-color: rgba(37, 211, 102, 0.5); }
+.glass-ch--tg:hover { background: color-mix(in srgb, #2AABEE 35%, transparent); border-color: rgba(42, 171, 238, 0.5); }
+.glass-ch--em:hover { background: color-mix(in srgb, #FF7629 35%, transparent); border-color: rgba(255, 118, 41, 0.5); }
+
+/* فرم */
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.glass-form .f-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.glass-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.glass-field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+.glass-field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+.glass-field input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+.glass-field input:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+
+.glass-submit {
+  margin-top: 6px;
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #FF7629 0%, #FF9A4D 100%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(255, 118, 41, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.glass-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(255, 118, 41, 0.5);
+  filter: brightness(1.05);
+}
+.glass-submit:active {
+  transform: translateY(0);
+}
+
+.glass-status {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  text-align: center;
+  min-height: 1.2em;
+  color: rgba(255, 255, 255, 0.85);
+}
+.glass-status.err { color: #FFB4B4; }
+.glass-status.ok { color: #A8F0C6; }
+
+@media (max-width: 520px) {
+  .contact-stage { padding: 70px 14px 32px; }
+  .glass-card { padding: 22px 18px 24px; border-radius: 22px; }
+  .glass-form .f-row { grid-template-columns: 1fr; }
+  .glass-channels { gap: 6px; }
+  .glass-ch { padding: 7px 11px; font-size: 11.5px; }
+}
+
+/* فوتر روی این صفحه کمی فشرده‌تر */
+body.page-contact .site-footer {
+  position: relative;
+  z-index: 3;
+}

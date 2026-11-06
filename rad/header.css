@@ -1,0 +1,807 @@
+/* hero.css — استخراج‌شده از site.css (متغیرهای --rm-* در design-system.css تعریف شده‌اند) */
+
+.hero-video-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #060c22;
+  color: #ffffff;
+  padding: 0;
+  /* هیرو از زیر هدر شروع می‌شه ولی هدر روش فلوت هستش */
+  margin-top: 0;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.hero-video-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to right, rgba(4, 8, 26, 0.80) 0%, rgba(4, 8, 26, 0.62) 38%, rgba(4, 8, 26, 0.10) 70%, rgba(4, 8, 26, 0.22) 100%),
+    linear-gradient(to bottom, rgba(4, 8, 26, 0.26) 0%, transparent 40%, rgba(4, 8, 26, 0.62) 100%);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+}
+
+.hero-overlay-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* در چیدمان راست‌به‌چپ (RTL)، این ویژگی کل کادر را به سمت چپ صفحه می‌برد */
+  text-align: right;
+}
+
+.hero-text-block {
+  max-width: 580px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: 0; /* هل دادن به سمت چپ */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+}
+
+.hero-overlay-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.badge-dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rm-orange);
+  box-shadow: 0 0 0 4px rgba(255, 118, 41, 0.35);
+  animation: rmPulse 2s infinite;
+}
+
+.hero-overlay-h1 {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 800;
+  line-height: 1.35;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  text-align: right;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.gradient-text-hero {
+  background: linear-gradient(135deg, #FF7629 0%, #FFA466 50%, #4FA3FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.hero-overlay-desc {
+  margin: 0 0 20px;
+  font-size: clamp(13.5px, 1.25vw, 15.5px);
+  line-height: 1.95;
+  color: rgba(240, 246, 255, 0.92);
+  max-width: 52ch;
+  text-align: right;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.hero-overlay-desc strong {
+  color: #FFA466;
+  font-weight: 700;
+}
+
+.hero-overlay-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.btn-hero-lg {
+  min-height: 44px;
+  padding: 0.72rem 1.8rem;
+  font-size: 14px;
+  border-radius: 999px;
+  background: var(--rm-orange);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(255, 118, 41, 0.35);
+}
+
+.btn-hero-lg:hover {
+  background: var(--rm-orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255, 118, 41, 0.5);
+}
+
+.btn-hero-outline {
+  min-height: 44px;
+  padding: 0.72rem 1.6rem;
+  font-size: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.btn-hero-outline:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.hero-overlay-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px);
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: rgba(13, 27, 72, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-stat-card strong {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 800;
+  color: #FFA466;
+}
+
+.hero-stat-card span {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-stat-sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.hero-floating-controls {
+  position: absolute;
+  bottom: 18px;
+  right: 24px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(5, 10, 30, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-ctrl-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.hero-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.hero-ctrl-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-pause { display: none; }
+
+.hero-video-hero.is-playing .icon-play { display: none; }
+
+.hero-video-hero.is-playing .icon-pause { display: block; }
+
+.icon-sound-on { display: none; }
+
+.icon-sound-off { display: block; }
+
+.hero-video-hero.is-unmuted .icon-sound-on { display: block; }
+
+.hero-video-hero.is-unmuted .icon-sound-off { display: none; }
+
+.icon-fs-exit { display: none; }
+
+:fullscreen .icon-fs-enter,
+:-webkit-full-screen .icon-fs-enter { display: none; }
+
+:fullscreen .icon-fs-exit,
+:-webkit-full-screen .icon-fs-exit { display: block; }
+
+.hero-ctrl-btn--fs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 10px;
+  border-radius: 999px;
+  color: #FFA466;
+}
+
+.fs-pill-tag {
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hero-scroll-down {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 10.5px;
+  font-weight: 600;
+  transition: color 0.2s, transform 0.2s;
+  animation: heroBounce 2.5s infinite;
+}
+
+.hero-scroll-down:hover {
+  color: #FFA466;
+}
+
+.mouse-icon {
+  width: 16px;
+  height: 24px;
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.mouse-wheel {
+  width: 2.5px;
+  height: 5px;
+  background: currentColor;
+  border-radius: 2px;
+  margin-top: 4px;
+  animation: mouseWheel 1.8s infinite;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(9px); opacity: 0; }
+}
+
+@keyframes heroBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-8px); }
+  60% { transform: translateX(-50%) translateY(-4px); }
+}
+
+.hero-video-element:fullscreen,
+.hero-video-element:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: #000 !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 768px) {
+.hero-video-hero {
+    height: calc(100svh - 60px);
+    min-height: 500px;
+  }
+.hero-overlay-content {
+    align-items: center;
+    padding: 0 20px;
+  }
+.hero-text-block {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+.hero-overlay-badge {
+    align-self: center;
+  }
+.hero-overlay-h1 {
+    text-align: center;
+  }
+.hero-overlay-desc {
+    text-align: center;
+  }
+.hero-overlay-buttons {
+    justify-content: center;
+  }
+.hero-floating-controls {
+    bottom: 14px;
+    right: 14px;
+  }
+.hero-scroll-down {
+    display: none;
+  }
+.hero-overlay-stats-bar {
+    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 24px;
+  }
+.hero-stat-sep {
+    width: 60px;
+    height: 1px;
+  }
+.hero-video-scrim {
+    background: linear-gradient(to bottom, rgba(4, 8, 26, 0.64) 0%, rgba(4, 8, 26, 0.74) 60%, rgba(4, 8, 26, 0.86) 100%);
+  }
+}
+
+body.page-home .hero-video-hero {
+--hv-canvas: var(--hm-bg);          /* رنگ زمینه‌ی صفحه */
+--hv-r: 28px;                       /* گردی گوشه‌ها */
+--hv-gutter: max(24px, calc((100vw - 1240px) / 2 + 24px)); /* vw، چون درصد در background-position معنای دیگری دارد */
+--hv-tab-w: 232px;                  /* عرض زبانه = به اندازه‌ی کادر لوگو، بدون فضای خالی */
+--hv-tab-h: 72px;
+}
+
+body.page-home .hero-video-hero::before {
+content: "";
+position: absolute;
+inset: 0;
+z-index: 6;
+pointer-events: none;
+background:
+ /* گوشه‌ی گرد بالا-چپ */
+ radial-gradient(circle at 100% 100%, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) left top / var(--hv-r) var(--hv-r) no-repeat,
+ /* بدنه‌ی زبانه */
+ linear-gradient(var(--hv-canvas), var(--hv-canvas)) right top / calc(var(--hv-tab-w) - var(--hv-r)) var(--hv-tab-h) no-repeat,
+ linear-gradient(var(--hv-canvas), var(--hv-canvas)) right top / var(--hv-tab-w) calc(var(--hv-tab-h) - var(--hv-r)) no-repeat,
+ /* گوشه‌ی گرد پایین-چپ زبانه */
+ radial-gradient(circle at 100% 0, var(--hv-canvas) calc(var(--hv-r) - .5px), transparent var(--hv-r)) right calc(var(--hv-tab-w) - var(--hv-r)) top calc(var(--hv-tab-h) - var(--hv-r)) / var(--hv-r) var(--hv-r) no-repeat,
+ /* اتصال نرم زبانه به لبه‌ی بالا (چپ زبانه) و لبه‌ی راست (زیر زبانه) */
+ radial-gradient(circle at 0 100%, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) right var(--hv-tab-w) top 0 / var(--hv-r) var(--hv-r) no-repeat,
+ radial-gradient(circle at 0 100%, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) right 0 top var(--hv-tab-h) / var(--hv-r) var(--hv-r) no-repeat;
+}
+
+@media (max-width: 900px) {
+body.page-home .hero-video-hero { --hv-tab-w: 150px; } /* زیر ۹۰۰px شعار لوگو مخفی است */
+}
+
+@media (max-width: 640px) {
+body.page-home .hero-video-hero { --hv-r: 22px; --hv-tab-h: 70px; }
+}
+
+body.page-home .hero-video-hero {
+--hv-bl-w: 330px;   /* عرض زبانه */
+--hv-bl-h: 92px;    /* ارتفاع زبانه */
+}
+
+body.page-home .hero-video-hero::after {
+content: "";
+position: absolute;
+inset: 0;
+z-index: 6;
+pointer-events: none;
+background:
+ /* گوشه‌ی گرد پایین-راست هیرو */
+ radial-gradient(circle at 0 0, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) right bottom / var(--hv-r) var(--hv-r) no-repeat,
+ /* بدنه‌ی زبانه */
+ linear-gradient(var(--hv-canvas), var(--hv-canvas)) left bottom / calc(var(--hv-bl-w) - var(--hv-r)) var(--hv-bl-h) no-repeat,
+ linear-gradient(var(--hv-canvas), var(--hv-canvas)) left bottom / var(--hv-bl-w) calc(var(--hv-bl-h) - var(--hv-r)) no-repeat,
+ /* گوشه‌ی گرد بالا-راست خود زبانه */
+ radial-gradient(circle at 0 100%, var(--hv-canvas) calc(var(--hv-r) - .5px), transparent var(--hv-r)) left calc(var(--hv-bl-w) - var(--hv-r)) bottom calc(var(--hv-bl-h) - var(--hv-r)) / var(--hv-r) var(--hv-r) no-repeat,
+ /* اتصال نرم زبانه به لبه‌ی پایین (سمت راست زبانه) */
+ radial-gradient(circle at 100% 0, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) left var(--hv-bl-w) bottom 0 / var(--hv-r) var(--hv-r) no-repeat,
+ /* اتصال نرم زبانه به لبه‌ی چپ (بالای زبانه) */
+ radial-gradient(circle at 100% 0, transparent calc(var(--hv-r) - .5px), var(--hv-canvas) var(--hv-r)) left 0 bottom var(--hv-bl-h) / var(--hv-r) var(--hv-r) no-repeat;
+}
+
+@media (max-width: 640px) {
+body.page-home .hero-video-hero { --hv-bl-w: 270px; --hv-bl-h: 76px; }
+}
+
+body.page-home .hero-tab-stats {
+position: absolute;
+left: 12px;
+bottom: 12px;
+z-index: 7;
+width: calc(var(--hv-bl-w) - 24px);
+height: calc(var(--hv-bl-h) - 24px);
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+
+body.page-home .hts-card {
+display: flex;
+align-items: center;
+gap: 10px;
+min-width: 0;
+padding-inline: 12px;
+border-radius: 14px;
+background: #fff;
+border: 1px solid var(--rm-line);
+box-shadow: 0 6px 18px rgba(13, 75, 141, 0.10);
+}
+
+body.page-home .hts-ico {
+flex: none;
+display: grid;
+place-items: center;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+color: #fff;
+}
+
+body.page-home .hts-ico--orange { background: var(--rm-orange); }
+
+body.page-home .hts-ico--blue { background: #0A5CFF; }
+
+body.page-home .hts-ico svg {
+width: 19px; height: 19px;
+fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+body.page-home .hts-card strong {
+display: block;
+font-size: 17px;
+font-weight: 800;
+line-height: 1.3;
+color: var(--rm-text-strong, #0c1330);
+}
+
+body.page-home .hts-card small {
+display: block;
+font-size: 11.5px;
+line-height: 1.5;
+color: var(--rm-gray);
+white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+body.page-home .hero-tab-stats { left: 8px; bottom: 8px; width: calc(var(--hv-bl-w) - 16px); height: calc(var(--hv-bl-h) - 16px); gap: 6px; }
+body.page-home .hts-card { gap: 6px; padding-inline: 8px; }
+body.page-home .hts-ico { width: 28px; height: 28px; }
+body.page-home .hts-ico svg { width: 15px; height: 15px; }
+body.page-home .hts-card strong { font-size: 14px; }
+body.page-home .hts-card small { font-size: 10px; }
+}
+
+body.page-home .hero-overlay-content {
+align-items: flex-end !important;      /* در RTL یعنی سمت چپ */
+padding-bottom: 130px;                 /* بالا آوردن متن (هرچه بیشتر، متن بالاتر) */
+}
+
+body.page-home .hero-text-block {
+margin-left: 0 !important;
+margin-right: auto !important;
+align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+body.page-home .hero-overlay-content { align-items: center !important; padding-bottom: 110px; }
+body.page-home .hero-text-block { margin-inline: auto !important; }
+}
+
+body.page-home .hero-video-hero .hero-overlay-content {
+position: absolute !important;
+top: 0 !important;
+bottom: 0 !important;
+left: 0 !important;
+right: auto !important;
+width: min(680px, 100%) !important;
+max-width: none !important;
+margin: 0 !important;
+padding: 0 24px 320px max(24px, calc((100vw - 1240px) / 2 + 24px)) !important;
+display: flex !important;
+flex-direction: column !important;
+justify-content: center !important;
+align-items: flex-end !important;      /* در RTL = سمت چپ */
+}
+
+body.page-home .hero-video-hero .hero-text-block {
+width: auto !important;
+max-width: 580px !important;
+margin: 0 !important;
+align-items: flex-start !important;
+text-align: right;
+}
+
+@media (max-width: 768px) {
+body.page-home .hero-video-hero .hero-overlay-content {
+ width: 100% !important;
+ padding: 0 20px 240px !important;
+ align-items: center !important;
+}
+body.page-home .hero-video-hero .hero-text-block { align-items: center !important; text-align: center; }
+}
+
+body.page-home .hero-video-hero .hero-overlay-h1 {
+font-family: "Lalezar", "Vazirmatn", sans-serif !important;
+font-weight: 400 !important;           /* Lalezar فقط یک وزن دارد و خودش ضخیم است */
+font-size: clamp(36px, 4.8vw, 60px) !important;
+line-height: 1.5 !important;
+letter-spacing: 0 !important;          /* فاصله‌ی حروف، اتصال حروف فارسی را می‌شکند */
+}
+
+body.page-home .hero-overlay-h1 .dual {
+position: relative;
+display: inline-block;
+color: #E08A45;                         /* لایه‌ی ضخیم */
+text-shadow: none;
+}
+
+body.page-home .hero-overlay-h1 .dual::after {
+content: attr(data-text);
+position: absolute;
+inset: 0;
+transform: translate(-0.10em, 0.12em);  /* جابه‌جایی لایه‌ی نازک؛ برای شدت افکت عدد را کم و زیاد کنید */
+color: transparent;
+-webkit-text-stroke: 1.5px #F3EFE0;     /* لایه‌ی نازک */
+pointer-events: none;
+}
+
+/* ========== User request: text bottom-right + white page bg + no bottom-right icons ========== */
+
+/* Make page background white */
+body.page-home {
+background: #ffffff !important;
+}
+
+/* Hero text to bottom-right */
+body.page-home .hero-overlay-content {
+position: absolute;
+inset: 0;
+z-index: 3;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;   /* push to bottom */
+align-items: flex-start;     /* in RTL this is the right side */
+padding: 0 40px 80px 40px;
+max-width: none;
+margin: 0;
+pointer-events: none;
+}
+
+body.page-home .hero-text-block {
+max-width: 520px;
+margin: 0;
+pointer-events: auto;
+text-align: right;
+align-items: flex-end;
+}
+
+body.page-home .hero-overlay-h1 {
+text-align: right;
+margin-bottom: 0;
+}
+
+/* Hide the floating video controls (already removed from HTML, but keep CSS safety) */
+.hero-floating-controls {
+display: none !important;
+}
+
+/* Optional: keep stats cards on bottom-left, scroll indicator centered */
+body.page-home .hero-tab-stats {
+left: 20px;
+bottom: 24px;
+}
+
+body.page-home .hero-scroll-down {
+bottom: 28px;
+}
+
+@media (max-width: 768px) {
+body.page-home .hero-overlay-content {
+ padding: 0 20px 100px 20px;
+ align-items: center;
+}
+body.page-home .hero-text-block {
+ max-width: 100%;
+ align-items: center;
+ text-align: center;
+}
+body.page-home .hero-overlay-h1 {
+ text-align: center;
+}
+}
+
+/* ========== Request: text bottom-right, no scrim, sharp bottom corners ========== */
+
+/* Completely remove any remaining scrim effect */
+.hero-video-scrim {
+display: none !important;
+opacity: 0 !important;
+background: none !important;
+}
+
+/* Force text block to bottom-right of the video */
+body.page-home .hero-overlay-content {
+position: absolute !important;
+inset: 0 !important;
+z-index: 5 !important;
+display: flex !important;
+flex-direction: column !important;
+justify-content: flex-end !important;   /* bottom */
+align-items: flex-start !important;     /* right side in RTL */
+padding: 0 48px 48px 48px !important;
+max-width: none !important;
+margin: 0 !important;
+width: 100% !important;
+pointer-events: none;
+}
+
+body.page-home .hero-text-block {
+max-width: 480px !important;
+margin: 0 !important;
+margin-right: 0 !important;
+margin-left: auto !important; /* extra push in some browsers */
+pointer-events: auto;
+text-align: right !important;
+align-items: flex-end !important;
+}
+
+body.page-home .hero-overlay-h1 {
+text-align: right !important;
+margin: 0 !important;
+text-shadow: 0 2px 12px rgba(0,0,0,0.55);
+}
+
+/* Make bottom-left and bottom-right corners of stats cards sharp */
+body.page-home .hts-card {
+border-radius: 14px 14px 0 0 !important; /* only top corners rounded, bottom sharp */
+}
+
+/* If the whole stats container has radius, make it sharp at bottom */
+body.page-home .hero-tab-stats {
+border-radius: 0 !important;
+}
+
+/* Also make any bottom bar / overall hero bottom corners sharp if present */
+.hero-video-hero {
+border-radius: 0 !important;
+}
+
+@media (max-width: 768px) {
+body.page-home .hero-overlay-content {
+ padding: 0 20px 90px 20px !important;
+ align-items: center !important;
+}
+body.page-home .hero-text-block {
+ max-width: 100% !important;
+ align-items: center !important;
+ text-align: center !important;
+}
+body.page-home .hero-overlay-h1 {
+ text-align: center !important;
+}
+}
+
+/* ========== Stats (150) lower + white background ========== */
+body.page-home {
+background: #ffffff !important;
+}
+
+body.page-home,
+body.page-home #main-content,
+body.page-home main {
+background-color: #ffffff !important;
+}
+
+/* Move the 150 stats cards lower */
+body.page-home .hero-tab-stats {
+bottom: 8px !important;
+left: 16px !important;
+}
+
+@media (max-width: 640px) {
+body.page-home .hero-tab-stats {
+ bottom: 4px !important;
+ left: 8px !important;
+}
+}
+
+/* Force pure white everywhere on home */
+body.page-home {
+--rm-home-canvas: #ffffff !important;
+--hm-bg: #ffffff !important;
+--bg: #ffffff !important;
+background: #ffffff !important;
+}
+
+/* ========== White background behind the video/image ========== */
+body.page-home .hero-video-hero {
+background: #ffffff !important;
+}
+
+body.page-home .hero-video-bg {
+background: #ffffff !important;
+/* فاصله خیلی کم از اطراف تا ویدیو به لبه‌ها نچسبد */
+inset: 8px !important;
+width: auto !important;
+height: auto !important;
+border-radius: 18px;
+overflow: hidden;
+}
+
+body.page-home .hero-video-element {
+border-radius: 18px;
+}
